@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "TTCTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // Add navigation controller as root navigation controller
+    TTCTableViewController* tvc = [[TTCTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    UINavigationController* nvc = [[UINavigationController alloc] initWithRootViewController:tvc];
+    self.window.rootViewController = nvc;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
