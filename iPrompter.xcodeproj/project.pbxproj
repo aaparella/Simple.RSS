@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA28282819D37AD500640A2A /* TTCAddSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */; };
+		FA28282919D37AD500640A2A /* TTCAddSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */; };
 		FA4CF70C19CFF68F004B6EA6 /* TTCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4CF70B19CFF68F004B6EA6 /* TTCTableViewController.m */; };
 		FA55F22519CFF22E006CC119 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55F22419CFF22E006CC119 /* main.m */; };
 		FA55F22819CFF22E006CC119 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55F22719CFF22E006CC119 /* AppDelegate.m */; };
@@ -25,6 +27,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA28282519D37AD500640A2A /* TTCAddSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCAddSourceViewController.h; sourceTree = "<group>"; };
+		FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCAddSourceViewController.m; sourceTree = "<group>"; };
+		FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTCAddSourceViewController.xib; sourceTree = "<group>"; };
 		FA4CF70A19CFF68F004B6EA6 /* TTCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCTableViewController.h; sourceTree = "<group>"; };
 		FA4CF70B19CFF68F004B6EA6 /* TTCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCTableViewController.m; sourceTree = "<group>"; };
 		FA55F21F19CFF22E006CC119 /* iPrompter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPrompter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +86,9 @@
 				FA55F22719CFF22E006CC119 /* AppDelegate.m */,
 				FA4CF70A19CFF68F004B6EA6 /* TTCTableViewController.h */,
 				FA4CF70B19CFF68F004B6EA6 /* TTCTableViewController.m */,
+				FA28282519D37AD500640A2A /* TTCAddSourceViewController.h */,
+				FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */,
+				FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */,
 				FA55F22F19CFF22E006CC119 /* Images.xcassets */,
 				FA55F22219CFF22E006CC119 /* Supporting Files */,
 			);
@@ -194,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA55F23019CFF22E006CC119 /* Images.xcassets in Resources */,
+				FA28282919D37AD500640A2A /* TTCAddSourceViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +223,7 @@
 				FA55F22819CFF22E006CC119 /* AppDelegate.m in Sources */,
 				FA4CF70C19CFF68F004B6EA6 /* TTCTableViewController.m in Sources */,
 				FA55F22519CFF22E006CC119 /* main.m in Sources */,
+				FA28282819D37AD500640A2A /* TTCAddSourceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

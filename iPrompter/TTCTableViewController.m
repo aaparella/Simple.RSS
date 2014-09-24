@@ -7,8 +7,14 @@
 //
 
 #import "TTCTableViewController.h"
+#import "TTCAddSourceViewController.h"
 
-@interface TTCTableViewController ()
+@interface TTCTableViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) NSMutableArray* sectionHeaders;
+
+@property (nonatomic, strong) NSMutableArray* sources;
+@property (nonatomic, strong) NSMutableArray* collections;
 
 @end
 
@@ -18,15 +24,27 @@
     self = [super initWithStyle:style];
     
     if (self) {
-        self.navigationItem.title = @"iPrompter";
+        self.navigationItem.title = @"Sources";
         self.navigationItem.leftBarButtonItem = self.editButtonItem;
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                                  initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                  target:self action:@selector(newEntry)];
+        
+        self.sectionHeaders = [[NSMutableArray alloc] initWithArray:@[@"Collections",
+                                                                      @"Sources"]];
+        
+        // Allow for reuse of UITableViewCells
+        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+        
+        // Dummy values for testing
+        self.sources = [[NSMutableArray alloc] initWithArray:@[@"Feedly",
+                                                               @"Google Reader"]];
+        
+        self.collections = [[NSMutableArray alloc] initWithArray:@[@"Tech",
+                                                                   @"Lifestyle"]];
     }
     
     return self;
-}
-
-- (void) test {
-    NSLog(@"Testing");
 }
 
 - (void)viewDidLoad {
@@ -38,27 +56,49 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) newEntry {
+    NSLog(@"Adding a new source");
+    TTCAddSourceViewController* vc = [[TTCAddSourceViewController alloc] init];
+    
+    vc.delegate = self;
+    
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark - Table view delegate
+
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.sectionHeaders objectAtIndex:section];
+}
+
 #pragma mark - Table view data source
 
+//TODO: Change these functions to be determined programatically, could need (n) sections in future
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 0;
+    return [self.sectionHeaders count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 0;
+    // Each section stored as an array of items that compose that section
+    if (section == 1)
+        return [self.sources count];
+    else
+        return [self.collections count];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    if (indexPath.section == 1)
+        cell.textLabel.text = [self.sources objectAtIndex:indexPath.row];
+    else
+        cell.textLabel.text = [self.collections objectAtIndex:indexPath.row];
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -86,22 +126,8 @@
 }
 */
 
-/*
-// Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
