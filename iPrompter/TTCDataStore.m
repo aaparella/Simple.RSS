@@ -48,15 +48,16 @@
 }
 
 - (NSString *) sourceForIndexPath: (NSIndexPath*) index {
-    
     return [[self.sources objectAtIndex:index.section] objectAtIndex:index.item];
-    
+}
+
+- (void) deleteObjectAtIndexpath:(NSIndexPath *)indexPath {
+    [[self.sources objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.item];
 }
 
 - (void) moveObjectToIndexPath: (NSIndexPath*) toIndexPath fromIndexPath: (NSIndexPath*) fromIndexPath {
     [[self.sources objectAtIndex:toIndexPath.section] addObject:[[self.sources objectAtIndex:fromIndexPath.section] objectAtIndex:fromIndexPath.item]];
     [[self.sources objectAtIndex:fromIndexPath.section] removeObjectAtIndex:fromIndexPath.item];
 }
-
 
 @end

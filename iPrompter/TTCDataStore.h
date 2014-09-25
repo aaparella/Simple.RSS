@@ -20,7 +20,7 @@
 - (int) itemsForSectionWithIndexPath:(NSInteger) index;
 - (NSString *) sourceForIndexPath: (NSIndexPath*) index;
 - (int) sectionCount;
-
+- (void) deleteObjectAtIndexpath: (NSIndexPath *) indexPath;
 - (void) moveObjectToIndexPath: (NSIndexPath*) toIndexPath
                  fromIndexPath: (NSIndexPath*) fromIndexPath;
 

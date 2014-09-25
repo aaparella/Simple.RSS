@@ -71,6 +71,8 @@
     view.backgroundColor = [UIColor whiteColor];
     
     UIViewController* vc = [[UIViewController alloc] init];
+    
+    vc.navigationItem.title = [[TTCDataStore sharedStore] sourceForIndexPath:indexPath];
     vc.view = view;
     
     [self.navigationController pushViewController:vc animated:YES];
@@ -104,7 +106,7 @@
 // Allow for deleting objects in the sections
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [[[[TTCDataStore sharedStore] sources] objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.item];
+        [[TTCDataStore sharedStore] deleteObjectAtIndexpath:indexPath];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // If we're inserting
