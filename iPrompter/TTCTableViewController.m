@@ -43,14 +43,25 @@
 
 // Adding a new source
 - (void) newEntry {
-    NSLog(@"Adding a new source");
+
     TTCAddSourceViewController* vc = [[TTCAddSourceViewController alloc] init];
     
     vc.delegate = self;
-    
     UINavigationController* nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     
     [self presentViewController:nvc animated:YES completion:nil];
+}
+
+- (void) addSource {
+    [[TTCDataStore sharedStore] addSource:@"Testing"];
+    NSIndexPath* index = [NSIndexPath indexPathForItem:[[TTCDataStore sharedStore] numberOfSources] - 1 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void) addCollection {
+    [[TTCDataStore sharedStore] addCollection:@"Testing"];
+    NSIndexPath* index = [NSIndexPath indexPathForItem:[[TTCDataStore sharedStore] numberOfCollections] - 1 inSection:1];
+    [self.tableView insertRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 // Because we can't pass arguments to @selector()'s for whatever reason
@@ -116,7 +127,7 @@
 // Allow for rearranging of section entries
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
 
-    [[TTCDataStore sharedStore] moveObjectToIndexPath:toIndexPath fromIndexPath:fromIndexPath];
+    [[TTCDataStore sharedStore] moveObjectAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
 
 }
 

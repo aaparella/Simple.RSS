@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                           target:(TTCTableViewController *) self.delegate
                                                                                           action:@selector(dismissViewController)];
     
@@ -27,6 +27,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)addSource:(id)sender {
+    [self.delegate addSource];
+    [self.delegate dismissViewController];
+}
+
+- (IBAction)addCollection:(id)sender {
+    [self.delegate addCollection];
+    [self.delegate dismissViewController];
 }
 
 /*

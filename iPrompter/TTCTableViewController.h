@@ -11,5 +11,7 @@
 @interface TTCTableViewController : UITableViewController
 
 - (void) dismissViewController;
+- (void) addSource;
+- (void) addCollection;
 
 @end

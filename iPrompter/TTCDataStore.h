@@ -21,7 +21,12 @@
 - (NSString *) sourceForIndexPath: (NSIndexPath*) index;
 - (int) sectionCount;
 - (void) deleteObjectAtIndexpath: (NSIndexPath *) indexPath;
-- (void) moveObjectToIndexPath: (NSIndexPath*) toIndexPath
-                 fromIndexPath: (NSIndexPath*) fromIndexPath;
+- (void) moveObjectAtIndexPath: (NSIndexPath*) fromIndexPath
+                   toIndexPath: (NSIndexPath*) toIndexPath;
+- (void) addSource:(NSString *) source;
+- (void) addCollection:(NSString *) collection;
+
+- (NSUInteger) numberOfCollections;
+- (NSUInteger) numberOfSources;
 
 @end

@@ -55,9 +55,29 @@
     [[self.sources objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.item];
 }
 
-- (void) moveObjectToIndexPath: (NSIndexPath*) toIndexPath fromIndexPath: (NSIndexPath*) fromIndexPath {
-    [[self.sources objectAtIndex:toIndexPath.section] addObject:[[self.sources objectAtIndex:fromIndexPath.section] objectAtIndex:fromIndexPath.item]];
-    [[self.sources objectAtIndex:fromIndexPath.section] removeObjectAtIndex:fromIndexPath.item];
+- (void) moveObjectAtIndexPath:(NSIndexPath*) fromPath toIndexPath: (NSIndexPath*) toPath {
+
+    if (toPath == fromPath) return;
+    
+    NSString* movedItem = [[self.sources objectAtIndex:fromPath.section] objectAtIndex:fromPath.item];
+    [[self.sources objectAtIndex:fromPath.section] removeObjectAtIndex:fromPath.item];
+    [[self.sources objectAtIndex:fromPath.section] insertObject:movedItem atIndex:toPath.item];
+}
+
+- (void) addSource:(NSString *) source {
+    [[self.sources objectAtIndex:0] addObject:source];
+}
+
+- (void) addCollection:(NSString *) collection {
+    [[self.sources objectAtIndex:1] addObject:collection];
+}
+
+- (NSUInteger) numberOfCollections {
+    return [[self.sources objectAtIndex:1] count];
+}
+
+- (NSUInteger) numberOfSources {
+    return [[self.sources objectAtIndex:0] count];
 }
 
 @end

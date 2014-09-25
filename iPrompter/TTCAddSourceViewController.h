@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TTCTableViewController.h"
 
 @interface TTCAddSourceViewController : UIViewController
 
-@property (nonatomic, weak) id delegate;
+@property (nonatomic, weak) TTCTableViewController* delegate;
 
 @end
