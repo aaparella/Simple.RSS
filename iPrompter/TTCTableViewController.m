@@ -12,9 +12,7 @@
 @interface TTCTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray* sectionHeaders;
-
-@property (nonatomic, strong) NSMutableArray* sources;
-@property (nonatomic, strong) NSMutableArray* collections;
+@property (nonatomic, strong) NSMutableArray* content;
 
 @end
 
@@ -30,18 +28,14 @@
                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                   target:self action:@selector(newEntry)];
         
-        self.sectionHeaders = [[NSMutableArray alloc] initWithArray:@[@"Collections",
-                                                                      @"Sources"]];
+        self.sectionHeaders = [[NSMutableArray alloc] initWithArray:@[@"Accounts", @"Collections"]];
         
         // Allow for reuse of UITableViewCells
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
         
-        // Dummy values for testing
-        self.sources = [[NSMutableArray alloc] initWithArray:@[@"Feedly",
-                                                               @"Google Reader"]];
-        
-        self.collections = [[NSMutableArray alloc] initWithArray:@[@"Tech",
-                                                                   @"Lifestyle"]];
+        self.content = [[NSMutableArray alloc] initWithArray:
+                                    @[[[NSMutableArray alloc] initWithArray:@[@"Feedly", @"Google Reader"]],
+                                     [[NSMutableArray alloc] initWithArray:@[@"Tech", @"Lifestyle", @"Comedy"]]]];
     }
     
     return self;
@@ -56,6 +50,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+// Adding a new source
 - (void) newEntry {
     NSLog(@"Adding a new source");
     TTCAddSourceViewController* vc = [[TTCAddSourceViewController alloc] init];
@@ -64,9 +59,10 @@
     
     UINavigationController* nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     
-    [self presentViewController:nvc     animated:YES completion:nil];
+    [self presentViewController:nvc animated:YES completion:nil];
 }
 
+// Because we can't pass arguments to @selector()'s for whatever reason
 - (void) dismissViewController {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -77,9 +73,25 @@
     return [self.sectionHeaders objectAtIndex:section];
 }
 
+// Push new view for a given feed source or collection of sources
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIView* view = [[UIView alloc] initWithFrame:self.view.bounds];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    UIViewController* vc = [[UIViewController alloc] init];
+    vc.view = view;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    NSLog(@"%@\n", indexPath);
+    
+}
+
 #pragma mark - Table view data source
 
 //TODO: Change these functions to be determined programatically, could need (n) sections in future
+//          Possible use a singleton data store object?
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.sectionHeaders count];
@@ -87,53 +99,33 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Each section stored as an array of items that compose that section
-    if (section == 1)
-        return [self.sources count];
-    else
-        return [self.collections count];
+    return [[self.content objectAtIndex:section] count];
 }
 
+// Create cell for a given location in a given section
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     
-    if (indexPath.section == 1)
-        cell.textLabel.text = [self.sources objectAtIndex:indexPath.row];
-    else
-        cell.textLabel.text = [self.collections objectAtIndex:indexPath.row];
-    
+    cell.textLabel.text = [[self.content objectAtIndex:indexPath.section] objectAtIndex:indexPath.item];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
+// Allow for deleting objects in the sections
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [[self.content objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.item];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        // If we're inserting
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
+// Allow for rearranging of section entries
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+    [[self.content objectAtIndex:toIndexPath.section] addObject:[[self.content objectAtIndex:toIndexPath.section] objectAtIndex:toIndexPath.item]];
+    [[self.content objectAtIndex:fromIndexPath.section] removeObjectAtIndex:fromIndexPath.item];
 }
 
 @end
