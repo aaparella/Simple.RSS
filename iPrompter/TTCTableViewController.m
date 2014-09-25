@@ -8,11 +8,9 @@
 
 #import "TTCTableViewController.h"
 #import "TTCAddSourceViewController.h"
+#import "TTCDataStore.h"
 
 @interface TTCTableViewController () <UITableViewDataSource, UITableViewDelegate>
-
-@property (nonatomic, strong) NSMutableArray* sectionHeaders;
-@property (nonatomic, strong) NSMutableArray* content;
 
 @end
 
@@ -22,20 +20,13 @@
     self = [super initWithStyle:style];
     
     if (self) {
+        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+        
         self.navigationItem.title = @"Sources";
         self.navigationItem.leftBarButtonItem = self.editButtonItem;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                   target:self action:@selector(newEntry)];
-        
-        self.sectionHeaders = [[NSMutableArray alloc] initWithArray:@[@"Accounts", @"Collections"]];
-        
-        // Allow for reuse of UITableViewCells
-        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
-        
-        self.content = [[NSMutableArray alloc] initWithArray:
-                                    @[[[NSMutableArray alloc] initWithArray:@[@"Feedly", @"Google Reader"]],
-                                     [[NSMutableArray alloc] initWithArray:@[@"Tech", @"Lifestyle", @"Comedy"]]]];
     }
     
     return self;
@@ -70,7 +61,7 @@
 #pragma mark - Table view delegate
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.sectionHeaders objectAtIndex:section];
+    return [[TTCDataStore sharedStore] sectionHeaderForIndex:section];
 }
 
 // Push new view for a given feed source or collection of sources
@@ -83,9 +74,6 @@
     vc.view = view;
     
     [self.navigationController pushViewController:vc animated:YES];
-    
-    NSLog(@"%@\n", indexPath);
-    
 }
 
 #pragma mark - Table view data source
@@ -94,19 +82,20 @@
 //          Possible use a singleton data store object?
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.sectionHeaders count];
+    return [[TTCDataStore sharedStore] sectionCount];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Each section stored as an array of items that compose that section
-    return [[self.content objectAtIndex:section] count];
+    return [[TTCDataStore sharedStore] itemsForSectionWithIndexPath:section];
 }
 
 // Create cell for a given location in a given section
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [[self.content objectAtIndex:indexPath.section] objectAtIndex:indexPath.item];
+    
+    cell.textLabel.text = [[TTCDataStore sharedStore] sourceForIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -115,7 +104,7 @@
 // Allow for deleting objects in the sections
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [[self.content objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.item];
+        [[[[TTCDataStore sharedStore] sources] objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.item];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // If we're inserting
@@ -124,8 +113,9 @@
 
 // Allow for rearranging of section entries
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    [[self.content objectAtIndex:toIndexPath.section] addObject:[[self.content objectAtIndex:toIndexPath.section] objectAtIndex:toIndexPath.item]];
-    [[self.content objectAtIndex:fromIndexPath.section] removeObjectAtIndex:fromIndexPath.item];
+
+    [[TTCDataStore sharedStore] moveObjectToIndexPath:toIndexPath fromIndexPath:fromIndexPath];
+
 }
 
 @end
