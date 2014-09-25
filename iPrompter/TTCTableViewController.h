@@ -10,4 +10,6 @@
 
 @interface TTCTableViewController : UITableViewController
 
+- (void) dismissViewController;
+
 @end

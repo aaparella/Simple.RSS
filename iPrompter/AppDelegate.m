@@ -21,6 +21,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Add navigation controller as root navigation controller
+    
     TTCTableViewController* tvc = [[TTCTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
     UINavigationController* nvc = [[UINavigationController alloc] initWithRootViewController:tvc];

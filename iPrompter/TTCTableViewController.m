@@ -62,7 +62,13 @@
     
     vc.delegate = self;
     
-    [self presentViewController:vc animated:YES completion:nil];
+    UINavigationController* nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    
+    [self presentViewController:nvc     animated:YES completion:nil];
+}
+
+- (void) dismissViewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Table view delegate

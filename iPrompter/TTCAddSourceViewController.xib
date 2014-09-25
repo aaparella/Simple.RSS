@@ -13,40 +13,8 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6F-v3-x7f">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <state key="normal" title="Button">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="popView:" destination="-1" eventType="touchUpInside" id="mym-XX-17A"/>
-                    </connections>
-                </button>
-            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="centerY" secondItem="u6F-v3-x7f" secondAttribute="centerY" id="CWB-l5-aZB"/>
-                <constraint firstAttribute="centerX" secondItem="u6F-v3-x7f" secondAttribute="centerX" id="yj2-Mh-SWN"/>
-            </constraints>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="u6F-v3-x7f"/>
-                </mask>
-                <mask key="constraints">
-                    <exclude reference="CWB-l5-aZB"/>
-                    <exclude reference="yj2-Mh-SWN"/>
-                </mask>
-            </variation>
-            <variation key="heightClass=regular">
-                <mask key="subviews">
-                    <include reference="u6F-v3-x7f"/>
-                </mask>
-                <mask key="constraints">
-                    <include reference="CWB-l5-aZB"/>
-                    <include reference="yj2-Mh-SWN"/>
-                </mask>
-            </variation>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
         </view>
     </objects>
 </document>

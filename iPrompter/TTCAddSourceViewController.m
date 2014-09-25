@@ -15,13 +15,14 @@
 
 @implementation TTCAddSourceViewController
 
-- (IBAction)popView:(id)sender {
-    [self.delegate dismissViewControllerAnimated:YES completion:nil];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                          target:(TTCTableViewController *) self.delegate
+                                                                                          action:@selector(dismissViewController)];
+    
 }
 
 - (void)didReceiveMemoryWarning {
