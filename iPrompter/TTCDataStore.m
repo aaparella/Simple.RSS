@@ -24,9 +24,9 @@
     
     self = [super init];
     if (self) {
-        self.sectionHeaders = [[NSMutableArray alloc] initWithArray:@[@"Accounts", @"Collections"]];
+        self.sectionHeaders = [[NSMutableArray alloc] initWithArray:@[@"Sources", @"Collections"]];
         self.sources = [[NSMutableArray alloc] initWithArray:@[
-                                                    [[NSMutableArray alloc] initWithArray:@[@"Feedly", @"Google Reader"]],
+                                                    [[NSMutableArray alloc] initWithArray:@[@"Lifehacker", @"The Verge", @"Daring Fireball"]],
                                                     [[NSMutableArray alloc] initWithArray:@[@"Tech", @"Lifestyle", @"Design"]]]];
     }
     

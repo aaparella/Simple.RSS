@@ -23,7 +23,7 @@
     if (self) {
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
         
-        self.navigationItem.title = @"Sources";
+        self.navigationItem.title = @"iPrompter";
         self.navigationItem.leftBarButtonItem = self.editButtonItem;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
