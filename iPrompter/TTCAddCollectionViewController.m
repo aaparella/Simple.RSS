@@ -1,49 +1,37 @@
 //
-//  TTCAddSourceViewController.m
+//  TTCAddCollectionViewController.m
 //  iPrompter
 //
-//  Created by Alex Parella on 9/24/14.
+//  Created by Alex Parella on 9/25/14.
 //  Copyright (c) 2014 Tree Traversal Collective. All rights reserved.
 //
 
-#import "TTCAddSourceViewController.h"
-#import "TTCTableViewController.h"
+#import "TTCAddCollectionViewController.h"
 
-@interface TTCAddSourceViewController ()
+@interface TTCAddCollectionViewController ()
 
 @end
 
-@implementation TTCAddSourceViewController
+@implementation TTCAddCollectionViewController
 
 - (instancetype) init {
     self = [super init];
     if (self) {
-        self.tabBarItem.title = @"Add Source";
         // Needs an image, we'll get there eventually
+        self.tabBarItem.title = @"Add Collection";
     }
-        
+    
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
 }
-
-- (void) foo {}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)addSource:(id)sender {
-    [self.delegate addSource];
-    [self.delegate dismissViewController];
-}
-
-- (IBAction)addCollection:(id)sender {
-    [self.delegate addCollection];
-    [self.delegate dismissViewController];
 }
 
 /*

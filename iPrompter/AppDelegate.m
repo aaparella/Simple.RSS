@@ -20,13 +20,13 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    // Add navigation controller as root navigation controller
-    
+    // Add navigation controller as root navigation controller, with table view as initial view
     TTCTableViewController* tvc = [[TTCTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
     UINavigationController* nvc = [[UINavigationController alloc] initWithRootViewController:tvc];
     self.window.rootViewController = nvc;
     
+    // Bookkeeping stuff
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     

@@ -14,6 +14,8 @@
 		FA55F22819CFF22E006CC119 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55F22719CFF22E006CC119 /* AppDelegate.m */; };
 		FA55F23019CFF22E006CC119 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA55F22F19CFF22E006CC119 /* Images.xcassets */; };
 		FA55F23F19CFF22E006CC119 /* iPrompterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55F23E19CFF22E006CC119 /* iPrompterTests.m */; };
+		FAA89F6419D4ECFF00C47330 /* TTCAddCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA89F6219D4ECFF00C47330 /* TTCAddCollectionViewController.m */; };
+		FAA89F6519D4ECFF00C47330 /* TTCAddCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA89F6319D4ECFF00C47330 /* TTCAddCollectionViewController.xib */; };
 		FACD0A0319D3C17A00FA8C53 /* TTCDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FACD0A0219D3C17A00FA8C53 /* TTCDataStore.m */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,9 @@
 		FA55F23819CFF22E006CC119 /* iPrompterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iPrompterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA55F23D19CFF22E006CC119 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA55F23E19CFF22E006CC119 /* iPrompterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iPrompterTests.m; sourceTree = "<group>"; };
+		FAA89F6119D4ECFF00C47330 /* TTCAddCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCAddCollectionViewController.h; sourceTree = "<group>"; };
+		FAA89F6219D4ECFF00C47330 /* TTCAddCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCAddCollectionViewController.m; sourceTree = "<group>"; };
+		FAA89F6319D4ECFF00C47330 /* TTCAddCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTCAddCollectionViewController.xib; sourceTree = "<group>"; };
 		FACD0A0119D3C17A00FA8C53 /* TTCDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCDataStore.h; sourceTree = "<group>"; };
 		FACD0A0219D3C17A00FA8C53 /* TTCDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCDataStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +99,9 @@
 				FA28282519D37AD500640A2A /* TTCAddSourceViewController.h */,
 				FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */,
 				FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */,
+				FAA89F6119D4ECFF00C47330 /* TTCAddCollectionViewController.h */,
+				FAA89F6219D4ECFF00C47330 /* TTCAddCollectionViewController.m */,
+				FAA89F6319D4ECFF00C47330 /* TTCAddCollectionViewController.xib */,
 				FA55F22F19CFF22E006CC119 /* Images.xcassets */,
 				FA55F22219CFF22E006CC119 /* Supporting Files */,
 			);
@@ -208,6 +216,7 @@
 			files = (
 				FA55F23019CFF22E006CC119 /* Images.xcassets in Resources */,
 				FA28282919D37AD500640A2A /* TTCAddSourceViewController.xib in Resources */,
+				FAA89F6519D4ECFF00C47330 /* TTCAddCollectionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA89F6419D4ECFF00C47330 /* TTCAddCollectionViewController.m in Sources */,
 				FA55F22819CFF22E006CC119 /* AppDelegate.m in Sources */,
 				FA4CF70C19CFF68F004B6EA6 /* TTCTableViewController.m in Sources */,
 				FACD0A0319D3C17A00FA8C53 /* TTCDataStore.m in Sources */,

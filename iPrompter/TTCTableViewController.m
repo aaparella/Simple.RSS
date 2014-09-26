@@ -8,6 +8,7 @@
 
 #import "TTCTableViewController.h"
 #import "TTCAddSourceViewController.h"
+#import "TTCAddCollectionViewController.h"
 #import "TTCDataStore.h"
 
 @interface TTCTableViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -44,10 +45,20 @@
 // Adding a new source
 - (void) newEntry {
 
-    TTCAddSourceViewController* vc = [[TTCAddSourceViewController alloc] init];
+    TTCAddSourceViewController* addSource = [[TTCAddSourceViewController alloc] init];
+    addSource.delegate = self;
     
-    vc.delegate = self;
-    UINavigationController* nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    TTCAddCollectionViewController* addCollection = [[TTCAddCollectionViewController alloc] init];
+    addCollection.delegate = self;
+    
+    UITabBarController* tbc = [[UITabBarController alloc] init];
+    tbc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                         target:self
+                                                                                         action:@selector(dismissViewController)];
+    [tbc addChildViewController:addSource];
+    [tbc addChildViewController:addCollection];
+    
+    UINavigationController* nvc = [[UINavigationController alloc] initWithRootViewController:tbc];
     
     [self presentViewController:nvc animated:YES completion:nil];
 }
