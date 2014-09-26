@@ -1,4 +1,3 @@
 language: objective-c
 xcode_project: iPrompter.xcodeproj
-xcide_scheme: iPrompterTests
-
+# xcode_scheme: iPrompter I don't have tests yet!
