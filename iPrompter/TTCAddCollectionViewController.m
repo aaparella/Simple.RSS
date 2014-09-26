@@ -7,8 +7,12 @@
 //
 
 #import "TTCAddCollectionViewController.h"
+#import "TTCTableViewController.h"
 
-@interface TTCAddCollectionViewController ()
+@interface TTCAddCollectionViewController () <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *collectionNameField;
+@property (weak, nonatomic) IBOutlet UITextField *descriptionField;
 
 @end
 
@@ -24,6 +28,15 @@
     return self;
 }
 
+- (IBAction)addCollection:(id)sender {
+    
+    // To make the animation for dismissing keyboard cleaner
+    [self.view endEditing:YES];
+    
+    [self.delegate addCollection:self.collectionNameField.text];
+    [self.delegate dismissViewController];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -32,6 +45,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    return YES;
 }
 
 /*

@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TTCAddCollectionViewController">
             <connections>
+                <outlet property="collectionNameField" destination="5eQ-5u-4es" id="waJ-MQ-wxD"/>
+                <outlet property="descriptionField" destination="xAV-om-3kR" id="odz-jf-a9s"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +15,46 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Collection Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5eQ-5u-4es">
+                    <rect key="frame" x="8" y="119" width="584" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="GMI-Q9-wt5"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xAV-om-3kR">
+                    <rect key="frame" x="8" y="157" width="584" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="frP-hh-Py4"/>
+                    </connections>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UP2-mi-prd">
+                    <rect key="frame" x="250" y="210" width="101" height="30"/>
+                    <state key="normal" title="Add Collection">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="addCollection:" destination="-1" eventType="touchUpInside" id="WkL-H7-7E7"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="5eQ-5u-4es" secondAttribute="trailing" constant="8" id="3Al-Vb-M4f"/>
+                <constraint firstItem="5eQ-5u-4es" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="119" id="9pw-E4-LK6"/>
+                <constraint firstItem="xAV-om-3kR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="L0W-iG-VdJ"/>
+                <constraint firstItem="xAV-om-3kR" firstAttribute="top" secondItem="5eQ-5u-4es" secondAttribute="bottom" constant="8" id="Rvm-lY-mnw"/>
+                <constraint firstAttribute="trailing" secondItem="xAV-om-3kR" secondAttribute="trailing" constant="8" id="d0P-lG-zzb"/>
+                <constraint firstItem="5eQ-5u-4es" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="ePy-Cv-oLS"/>
+                <constraint firstItem="UP2-mi-prd" firstAttribute="top" secondItem="xAV-om-3kR" secondAttribute="bottom" constant="23" id="ffD-a0-cG4"/>
+                <constraint firstAttribute="centerX" secondItem="UP2-mi-prd" secondAttribute="centerX" constant="-0.5" id="zJN-kc-olV"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
         </view>
     </objects>
 </document>

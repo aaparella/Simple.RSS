@@ -9,7 +9,10 @@
 #import "TTCAddSourceViewController.h"
 #import "TTCTableViewController.h"
 
-@interface TTCAddSourceViewController ()
+@interface TTCAddSourceViewController () <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *sourceNameField;
+@property (weak, nonatomic) IBOutlet UITextField *sourceURLField;
 
 @end
 
@@ -31,18 +34,19 @@
 
 - (void) foo {}
 
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    return YES;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)addSource:(id)sender {
-    [self.delegate addSource];
-    [self.delegate dismissViewController];
-}
-
-- (IBAction)addCollection:(id)sender {
-    [self.delegate addCollection];
+    [self.view endEditing:YES];
+    
+    [self.delegate addSource:self.sourceNameField.text];
     [self.delegate dismissViewController];
 }
 

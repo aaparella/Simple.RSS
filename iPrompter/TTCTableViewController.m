@@ -63,14 +63,14 @@
     [self presentViewController:nvc animated:YES completion:nil];
 }
 
-- (void) addSource {
-    [[TTCDataStore sharedStore] addSource:@"Testing"];
+- (void) addSource:(NSString *) sourceName {
+    [[TTCDataStore sharedStore] addSource:sourceName];
     NSIndexPath* index = [NSIndexPath indexPathForItem:[[TTCDataStore sharedStore] numberOfSources] - 1 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
 }
 
-- (void) addCollection {
-    [[TTCDataStore sharedStore] addCollection:@"Testing"];
+- (void) addCollection:(NSString *) collectionName {
+    [[TTCDataStore sharedStore] addCollection:collectionName];
     NSIndexPath* index = [NSIndexPath indexPathForItem:[[TTCDataStore sharedStore] numberOfCollections] - 1 inSection:1];
     [self.tableView insertRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
 }
