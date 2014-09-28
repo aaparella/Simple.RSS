@@ -21,11 +21,14 @@
 }
 
 - (void) setUnreadArticles:(NSUInteger)unread {
-    self.unreadArticles = unread;
+    unreadArticles = unread;
 }
 
 - (NSUInteger) unreadArticles {
     return self.unreadArticles;
 }
 
+- (NSString *) description {
+    return [NSString stringWithFormat:@"%@ %@", self.title, self.URL];
+}
 @end

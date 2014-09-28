@@ -7,6 +7,7 @@
 //
 
 #import "TTCFeedDataStore.h"
+#import "TTCFeed.h"
 
 @implementation TTCFeedDataStore
 
@@ -24,10 +25,17 @@
     
     self = [super init];
     if (self) {
+        // Test data only, not going to be there in the end
         self.sectionHeaders = [[NSMutableArray alloc] initWithArray:@[@"Sources", @"Collections"]];
-        self.sources        = [[NSMutableArray alloc] initWithArray:@[@"The Verge", @"LifeHacker", @"Daring Fireball"]];
+        self.sources        = [[NSMutableArray alloc] init];
+        
+        [self.sources addObject:[[TTCFeed alloc] initWithTitle:@"Lifehacker" withURL:@"http://lifehacker.com"]];
+        [self.sources addObject:[[TTCFeed alloc] initWithTitle:@"Daring Fireball" withURL:@"http://daringfireball.net"]];
+        [self.sources addObject:[[TTCFeed alloc] initWithTitle:@"The Verge" withURL:@"http://theverge.com"]];
+        
         self.collectionTitles = [[NSMutableArray alloc] initWithArray:@[@"Tech", @"Design"]];
-        self.collections      = [[NSMutableDictionary alloc] initWithObjects:@[@"", @""] forKeys:@[@"Tech", @"Design"]];
+        self.collections      = [[NSMutableDictionary alloc] initWithObjects:@[
+                                                    [[NSMutableArray alloc] init], [[NSMutableArray alloc] init]] forKeys:@[@"Tech", @"Design"]];
     }
     
     return self;
@@ -47,7 +55,7 @@
 
 - (NSString *) sourceForIndexPath: (NSIndexPath*) index {
     if (index.section == 0)
-        return self.sources[index.item];
+        return  [self.sources[index.item] title];
     else
         return self.collectionTitles[index.item];
 }
@@ -55,12 +63,18 @@
 - (void) deleteObjectAtIndexpath:(NSIndexPath *)indexPath {
     // Removing source
     if (indexPath.section == 0) {
-        for (NSMutableArray* collection in self.collections)
-            [collection removeObject:self.sources[indexPath.item]];
+        // Remove this source from each collection it's in
+        for (NSString *collection in self.collectionTitles) {
+            NSMutableArray* values = [self.collections valueForKey:collection];
+            [values removeObject:self.sources[indexPath.item]];
+            [self.collections setObject:values forKey:collection];
+        }
+        
+        // Then actually remove the source
         [self.sources removeObjectAtIndex:indexPath.item];
     } else {
         // Remove both collection and entry in collection titles
-        [self.collections removeObjectsForKeys:@[self.collectionTitles[indexPath.item]]];
+        [self.collections removeObjectForKey:self.collectionTitles[indexPath.item]];
         [self.collectionTitles removeObjectAtIndex:indexPath.item];
     }
 }
@@ -79,8 +93,8 @@
     }
 }
 
-- (void) addSource:(NSString *) source {
-    [self.sources addObject:source];
+- (void) addSource:(NSString *) source withURL:(NSString *) URL {
+    [self.sources addObject:[[TTCFeed alloc] initWithTitle:source withURL:URL]];
 }
 
 - (void) addCollection:(NSString *) collection {

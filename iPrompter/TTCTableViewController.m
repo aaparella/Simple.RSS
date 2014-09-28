@@ -63,8 +63,8 @@
     [self presentViewController:nvc animated:YES completion:nil];
 }
 
-- (void) addSource:(NSString *) sourceName {
-    [[TTCFeedDataStore sharedStore] addSource:sourceName];
+- (void) addSource:(NSString *) sourceName withURL:(NSString *) URL {
+    [[TTCFeedDataStore sharedStore] addSource:sourceName withURL:URL];
     NSIndexPath* index = [NSIndexPath indexPathForItem:[[TTCFeedDataStore sharedStore] numberOfSources] - 1 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
 }

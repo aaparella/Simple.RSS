@@ -27,7 +27,7 @@
 - (void) moveObjectAtIndexPath: (NSIndexPath*) fromIndexPath
                    toIndexPath: (NSIndexPath*) toIndexPath;
 
-- (void) addSource:(NSString *) source;
+- (void) addSource:(NSString *) source withURL:(NSString *) URL;
 - (void) addCollection:(NSString *) collection;
 
 - (NSUInteger) numberOfCollections;

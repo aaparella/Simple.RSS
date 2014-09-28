@@ -46,7 +46,7 @@
 - (IBAction)addSource:(id)sender {
     [self.view endEditing:YES];
     
-    [self.delegate addSource:self.sourceNameField.text];
+    [self.delegate addSource:self.sourceNameField.text withURL:self.sourceURLField.text];
     [self.delegate dismissViewController];
 }
 

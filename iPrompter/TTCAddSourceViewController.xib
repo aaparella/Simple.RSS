@@ -21,22 +21,10 @@
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
-                    <variation key="heightClass=regular" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="182" width="600" height="30"/>
-                    </variation>
                     <connections>
                         <outlet property="delegate" destination="-1" id="mkF-Bm-ZjR"/>
                     </connections>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxx-t2-8bQ">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <state key="normal" title="Add Source">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="addSource:" destination="-1" eventType="touchUpInside" id="o6D-XL-mUB"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LvP-Ma-8WA">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,19 +37,33 @@
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                    <variation key="heightClass=regular" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="128" width="600" height="30"/>
-                    </variation>
                     <connections>
                         <outlet property="delegate" destination="-1" id="Mu1-fk-3QO"/>
                     </connections>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxx-t2-8bQ">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <state key="normal" title="Add Source">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="addSource:" destination="-1" eventType="touchUpInside" id="o6D-XL-mUB"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="qvb-d7-pvm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="46" id="0TX-EA-p7d"/>
+                <constraint firstItem="B3O-ek-ppb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="46" id="F9N-U0-7yk"/>
                 <constraint firstAttribute="centerX" secondItem="oxx-t2-8bQ" secondAttribute="centerX" constant="-0.5" id="MnW-Xf-Ofb">
                     <variation key="heightClass=regular" constant="4.5"/>
                 </constraint>
+                <constraint firstAttribute="trailing" secondItem="qvb-d7-pvm" secondAttribute="trailing" constant="54" id="VzY-hL-kiv"/>
+                <constraint firstItem="B3O-ek-ppb" firstAttribute="top" secondItem="qvb-d7-pvm" secondAttribute="bottom" constant="24" id="chg-AF-aBM"/>
+                <constraint firstAttribute="bottom" secondItem="B3O-ek-ppb" secondAttribute="bottom" constant="588" id="guK-CV-uQ0"/>
+                <constraint firstAttribute="bottom" secondItem="qvb-d7-pvm" secondAttribute="bottom" constant="642" id="nSR-wI-2Vl"/>
+                <constraint firstItem="qvb-d7-pvm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="128" id="siU-5W-eoz"/>
+                <constraint firstAttribute="trailing" secondItem="B3O-ek-ppb" secondAttribute="trailing" constant="54" id="uIg-nA-awV"/>
                 <constraint firstAttribute="centerY" secondItem="oxx-t2-8bQ" secondAttribute="centerY" constant="156" id="v7g-mY-Tw1">
                     <variation key="heightClass=regular" constant="16"/>
                 </constraint>
@@ -71,11 +73,19 @@
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="B3O-ek-ppb"/>
-                    <exclude reference="oxx-t2-8bQ"/>
                     <exclude reference="LvP-Ma-8WA"/>
                     <exclude reference="qvb-d7-pvm"/>
+                    <exclude reference="oxx-t2-8bQ"/>
                 </mask>
                 <mask key="constraints">
+                    <exclude reference="0TX-EA-p7d"/>
+                    <exclude reference="VzY-hL-kiv"/>
+                    <exclude reference="nSR-wI-2Vl"/>
+                    <exclude reference="siU-5W-eoz"/>
+                    <exclude reference="F9N-U0-7yk"/>
+                    <exclude reference="chg-AF-aBM"/>
+                    <exclude reference="guK-CV-uQ0"/>
+                    <exclude reference="uIg-nA-awV"/>
                     <exclude reference="MnW-Xf-Ofb"/>
                     <exclude reference="v7g-mY-Tw1"/>
                 </mask>
@@ -83,11 +93,19 @@
             <variation key="heightClass=regular">
                 <mask key="subviews">
                     <include reference="B3O-ek-ppb"/>
-                    <include reference="oxx-t2-8bQ"/>
                     <include reference="LvP-Ma-8WA"/>
                     <include reference="qvb-d7-pvm"/>
+                    <include reference="oxx-t2-8bQ"/>
                 </mask>
                 <mask key="constraints">
+                    <include reference="0TX-EA-p7d"/>
+                    <include reference="VzY-hL-kiv"/>
+                    <include reference="nSR-wI-2Vl"/>
+                    <include reference="siU-5W-eoz"/>
+                    <include reference="F9N-U0-7yk"/>
+                    <include reference="chg-AF-aBM"/>
+                    <include reference="guK-CV-uQ0"/>
+                    <include reference="uIg-nA-awV"/>
                     <include reference="MnW-Xf-Ofb"/>
                     <include reference="v7g-mY-Tw1"/>
                 </mask>
