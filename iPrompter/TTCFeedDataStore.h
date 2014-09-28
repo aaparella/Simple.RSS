@@ -13,8 +13,7 @@
 
 @property (nonatomic, strong) NSMutableArray* sectionHeaders;
 @property (nonatomic, strong) NSMutableArray* sources;
-@property (nonatomic, strong) NSMutableArray* collectionTitles;
-@property (nonatomic, strong) NSMutableDictionary* collections;
+@property (nonatomic, strong) NSMutableArray* collections;
 
 + (instancetype) sharedStore;
 
@@ -28,7 +27,8 @@
                    toIndexPath: (NSIndexPath*) toIndexPath;
 
 - (void) addSource:(NSString *) source withURL:(NSString *) URL;
-- (void) addCollection:(NSString *) collection;
+- (void) addCollection:(NSString *) collection withFeeds:(NSArray *) feeds;
+- (void) addSource:(NSString *) collection withFeeds:(NSArray *) feeds;
 
 - (NSUInteger) numberOfCollections;
 - (NSUInteger) numberOfSources;

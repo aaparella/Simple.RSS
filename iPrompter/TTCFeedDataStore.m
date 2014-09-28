@@ -8,6 +8,7 @@
 
 #import "TTCFeedDataStore.h"
 #import "TTCFeed.h"
+#import "TTCFeedCollection.h"
 
 @implementation TTCFeedDataStore
 
@@ -33,9 +34,9 @@
         [self.sources addObject:[[TTCFeed alloc] initWithTitle:@"Daring Fireball" withURL:@"http://daringfireball.net"]];
         [self.sources addObject:[[TTCFeed alloc] initWithTitle:@"The Verge" withURL:@"http://theverge.com"]];
         
-        self.collectionTitles = [[NSMutableArray alloc] initWithArray:@[@"Tech", @"Design"]];
-        self.collections      = [[NSMutableDictionary alloc] initWithObjects:@[
-                                                    [[NSMutableArray alloc] init], [[NSMutableArray alloc] init]] forKeys:@[@"Tech", @"Design"]];
+        self.collections = [[NSMutableArray alloc] init];
+        [self.collections addObject:[[TTCFeedCollection alloc] initWithTitle:@"Technology" withFeeds:@[]]];
+        [self.collections addObject:[[TTCFeedCollection alloc] initWithTitle:@"Design" withFeeds:@[]]];
     }
     
     return self;
@@ -50,32 +51,25 @@
 }
 
 - (int) numberOfItemsForSection:(NSInteger)index {
-    return (index == 0) ? (int)[self.sources count] : (int)[self.collectionTitles count];
+    return (index == 0) ? (int)[self.sources count] : (int)[self.collections count];
 }
 
 - (NSString *) sourceForIndexPath: (NSIndexPath*) index {
-    if (index.section == 0)
-        return  [self.sources[index.item] title];
-    else
-        return self.collectionTitles[index.item];
+    return (index.section == 0) ? [self.sources[index.item] title] : [self.collections[index.item] title];
 }
 
 - (void) deleteObjectAtIndexpath:(NSIndexPath *)indexPath {
     // Removing source
     if (indexPath.section == 0) {
         // Remove this source from each collection it's in
-        for (NSString *collection in self.collectionTitles) {
-            NSMutableArray* values = [self.collections valueForKey:collection];
-            [values removeObject:self.sources[indexPath.item]];
-            [self.collections setObject:values forKey:collection];
-        }
+        for (TTCFeedCollection* collection in self.collections)
+            [collection removeSource:self.sources[indexPath.item]];
         
         // Then actually remove the source
         [self.sources removeObjectAtIndex:indexPath.item];
     } else {
         // Remove both collection and entry in collection titles
-        [self.collections removeObjectForKey:self.collectionTitles[indexPath.item]];
-        [self.collectionTitles removeObjectAtIndex:indexPath.item];
+        [self.collections removeObjectAtIndex:indexPath.item];
     }
 }
 
@@ -87,23 +81,23 @@
         [self.sources insertObject:movedItem atIndex:toPath.item];
     }
     else {
-        id movedItem = self.collectionTitles[fromPath.item];
-        [self.collectionTitles removeObject:movedItem];
-        [self.collectionTitles insertObject:movedItem atIndex:toPath.item];
+        id movedItem = self.collections[fromPath.item];
+        [self.collections removeObject:movedItem];
+        [self.collections insertObject:movedItem atIndex:toPath.item];
     }
 }
 
 - (void) addSource:(NSString *) source withURL:(NSString *) URL {
     [self.sources addObject:[[TTCFeed alloc] initWithTitle:source withURL:URL]];
+    NSLog(@"%@\n", self.sources);
 }
 
-- (void) addCollection:(NSString *) collection {
-    [self.collectionTitles addObject:collection];
-    [self.collections addEntriesFromDictionary:@{collection : @""}];
+- (void) addCollection:(NSString *)collection withFeeds:(NSArray *) feeds {
+    [self.collections addObject:[[TTCFeedCollection alloc] initWithTitle:collection withFeeds:feeds]];
 }
 
 - (NSUInteger) numberOfCollections {
-    return (int) [self.collectionTitles count];
+    return (int) [self.collections count];
 }
 
 - (NSUInteger) numberOfSources {

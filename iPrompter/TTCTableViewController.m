@@ -70,7 +70,7 @@
 }
 
 - (void) addCollection:(NSString *) collectionName {
-    [[TTCFeedDataStore sharedStore] addCollection:collectionName];
+    [[TTCFeedDataStore sharedStore] addCollection:collectionName withFeeds:@[]];
     NSIndexPath* index = [NSIndexPath indexPathForItem:[[TTCFeedDataStore sharedStore] numberOfCollections] - 1 inSection:1];
     [self.tableView insertRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
 }
