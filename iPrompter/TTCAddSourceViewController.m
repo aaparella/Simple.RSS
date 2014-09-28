@@ -22,7 +22,7 @@
     self = [super init];
     if (self) {
         self.tabBarItem.title = @"Add Source";
-        // Needs an image, we'll get there eventually
+        self.tabBarItem.image = [UIImage imageNamed:@"addSourceIcon"];
     }
         
     return self;
@@ -31,8 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-
-- (void) foo {}
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     return YES;

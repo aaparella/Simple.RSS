@@ -23,6 +23,7 @@
     if (self) {
         // Needs an image, we'll get there eventually
         self.tabBarItem.title = @"Add Collection";
+        self.tabBarItem.image = [UIImage imageNamed:@"addCollectionIcon"];
     }
     
     return self;

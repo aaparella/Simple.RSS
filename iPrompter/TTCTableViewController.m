@@ -102,9 +102,6 @@
 
 #pragma mark - Table view data source
 
-//TODO: Change these functions to be determined programatically, could need (n) sections in future
-//          Possible use a singleton data store object?
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [[TTCFeedDataStore sharedStore] sectionCount];
 }
@@ -117,7 +114,6 @@
 // Create cell for a given location in a given section
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
-    
     
     cell.textLabel.text = [[TTCFeedDataStore sharedStore] sourceForIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -137,9 +133,7 @@
 
 // Allow for rearranging of section entries
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-
     [[TTCFeedDataStore sharedStore] moveObjectAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
-
 }
 
 @end

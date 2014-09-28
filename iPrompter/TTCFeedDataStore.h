@@ -28,7 +28,6 @@
 
 - (void) addSource:(NSString *) source withURL:(NSString *) URL;
 - (void) addCollection:(NSString *) collection withFeeds:(NSArray *) feeds;
-- (void) addSource:(NSString *) collection withFeeds:(NSArray *) feeds;
 
 - (NSUInteger) numberOfCollections;
 - (NSUInteger) numberOfSources;

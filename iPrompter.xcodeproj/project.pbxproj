@@ -10,6 +10,8 @@
 		FA28282819D37AD500640A2A /* TTCAddSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */; };
 		FA28282919D37AD500640A2A /* TTCAddSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */; };
 		FA304CB119D887C40086569E /* TTCFeedCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA304CB019D887C40086569E /* TTCFeedCollection.m */; };
+		FA304CB319D8A8C50086569E /* addSourceIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA304CB219D8A8C50086569E /* addSourceIcon@2x.png */; };
+		FA304CB519D8A9FE0086569E /* addCollectionIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA304CB419D8A9FE0086569E /* addCollectionIcon@2x.png */; };
 		FA4CF70C19CFF68F004B6EA6 /* TTCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4CF70B19CFF68F004B6EA6 /* TTCTableViewController.m */; };
 		FA55F22519CFF22E006CC119 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55F22419CFF22E006CC119 /* main.m */; };
 		FA55F22819CFF22E006CC119 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55F22719CFF22E006CC119 /* AppDelegate.m */; };
@@ -37,6 +39,8 @@
 		FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTCAddSourceViewController.xib; sourceTree = "<group>"; };
 		FA304CAF19D887C40086569E /* TTCFeedCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCFeedCollection.h; sourceTree = "<group>"; };
 		FA304CB019D887C40086569E /* TTCFeedCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCFeedCollection.m; sourceTree = "<group>"; };
+		FA304CB219D8A8C50086569E /* addSourceIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addSourceIcon@2x.png"; sourceTree = "<group>"; };
+		FA304CB419D8A9FE0086569E /* addCollectionIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addCollectionIcon@2x.png"; sourceTree = "<group>"; };
 		FA4CF70A19CFF68F004B6EA6 /* TTCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCTableViewController.h; sourceTree = "<group>"; };
 		FA4CF70B19CFF68F004B6EA6 /* TTCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCTableViewController.m; sourceTree = "<group>"; };
 		FA55F21F19CFF22E006CC119 /* iPrompter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPrompter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +125,8 @@
 		FA55F22219CFF22E006CC119 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA304CB219D8A8C50086569E /* addSourceIcon@2x.png */,
+				FA304CB419D8A9FE0086569E /* addCollectionIcon@2x.png */,
 				FA55F22319CFF22E006CC119 /* Info.plist */,
 				FA55F22419CFF22E006CC119 /* main.m */,
 			);
@@ -224,6 +230,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA304CB319D8A8C50086569E /* addSourceIcon@2x.png in Resources */,
+				FA304CB519D8A9FE0086569E /* addCollectionIcon@2x.png in Resources */,
 				FA55F23019CFF22E006CC119 /* Images.xcassets in Resources */,
 				FA28282919D37AD500640A2A /* TTCAddSourceViewController.xib in Resources */,
 				FAA89F6519D4ECFF00C47330 /* TTCAddCollectionViewController.xib in Resources */,
