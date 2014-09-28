@@ -9,7 +9,7 @@
 #import "TTCTableViewController.h"
 #import "TTCAddSourceViewController.h"
 #import "TTCAddCollectionViewController.h"
-#import "TTCDataStore.h"
+#import "TTCFeedDataStore.h"
 
 @interface TTCTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -64,14 +64,14 @@
 }
 
 - (void) addSource:(NSString *) sourceName {
-    [[TTCDataStore sharedStore] addSource:sourceName];
-    NSIndexPath* index = [NSIndexPath indexPathForItem:[[TTCDataStore sharedStore] numberOfSources] - 1 inSection:0];
+    [[TTCFeedDataStore sharedStore] addSource:sourceName];
+    NSIndexPath* index = [NSIndexPath indexPathForItem:[[TTCFeedDataStore sharedStore] numberOfSources] - 1 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void) addCollection:(NSString *) collectionName {
-    [[TTCDataStore sharedStore] addCollection:collectionName];
-    NSIndexPath* index = [NSIndexPath indexPathForItem:[[TTCDataStore sharedStore] numberOfCollections] - 1 inSection:1];
+    [[TTCFeedDataStore sharedStore] addCollection:collectionName];
+    NSIndexPath* index = [NSIndexPath indexPathForItem:[[TTCFeedDataStore sharedStore] numberOfCollections] - 1 inSection:1];
     [self.tableView insertRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
 }
 
@@ -83,7 +83,7 @@
 #pragma mark - Table view delegate
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[TTCDataStore sharedStore] sectionHeaderForIndex:section];
+    return [[TTCFeedDataStore sharedStore] sectionHeaderForIndex:section];
 }
 
 // Push new view for a given feed source or collection of sources
@@ -94,7 +94,7 @@
     
     UIViewController* vc = [[UIViewController alloc] init];
     
-    vc.navigationItem.title = [[TTCDataStore sharedStore] sourceForIndexPath:indexPath];
+    vc.navigationItem.title = [[TTCFeedDataStore sharedStore] sourceForIndexPath:indexPath];
     vc.view = view;
     
     [self.navigationController pushViewController:vc animated:YES];
@@ -106,12 +106,12 @@
 //          Possible use a singleton data store object?
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[TTCDataStore sharedStore] sectionCount];
+    return [[TTCFeedDataStore sharedStore] sectionCount];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Each section stored as an array of items that compose that section
-    return [[TTCDataStore sharedStore] itemsForSectionWithIndexPath:section];
+    return [[TTCFeedDataStore sharedStore] numberOfItemsForSection:section];
 }
 
 // Create cell for a given location in a given section
@@ -119,7 +119,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     
     
-    cell.textLabel.text = [[TTCDataStore sharedStore] sourceForIndexPath:indexPath];
+    cell.textLabel.text = [[TTCFeedDataStore sharedStore] sourceForIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -128,7 +128,7 @@
 // Allow for deleting objects in the sections
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [[TTCDataStore sharedStore] deleteObjectAtIndexpath:indexPath];
+        [[TTCFeedDataStore sharedStore] deleteObjectAtIndexpath:indexPath];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // If we're inserting
@@ -138,7 +138,7 @@
 // Allow for rearranging of section entries
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
 
-    [[TTCDataStore sharedStore] moveObjectAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
+    [[TTCFeedDataStore sharedStore] moveObjectAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
 
 }
 

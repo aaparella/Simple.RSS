@@ -9,20 +9,24 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface TTCDataStore : NSObject
+@interface TTCFeedDataStore : NSObject
 
 @property (nonatomic, strong) NSMutableArray* sectionHeaders;
 @property (nonatomic, strong) NSMutableArray* sources;
+@property (nonatomic, strong) NSMutableArray* collectionTitles;
+@property (nonatomic, strong) NSMutableDictionary* collections;
 
 + (instancetype) sharedStore;
 
 - (NSString *) sectionHeaderForIndex:(NSInteger) index;
-- (int) itemsForSectionWithIndexPath:(NSInteger) index;
+- (int) numberOfItemsForSection:(NSInteger) index;
 - (NSString *) sourceForIndexPath: (NSIndexPath*) index;
 - (int) sectionCount;
+
 - (void) deleteObjectAtIndexpath: (NSIndexPath *) indexPath;
 - (void) moveObjectAtIndexPath: (NSIndexPath*) fromIndexPath
                    toIndexPath: (NSIndexPath*) toIndexPath;
+
 - (void) addSource:(NSString *) source;
 - (void) addCollection:(NSString *) collection;
 

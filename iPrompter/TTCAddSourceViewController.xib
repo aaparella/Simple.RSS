@@ -16,18 +16,14 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Source Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qvb-d7-pvm">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Source URL" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="B3O-ek-ppb">
                     <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="Mu1-fk-3QO"/>
-                    </connections>
-                </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Source URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B3O-ek-ppb">
-                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <variation key="heightClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="0.0" y="182" width="600" height="30"/>
+                    </variation>
                     <connections>
                         <outlet property="delegate" destination="-1" id="mkF-Bm-ZjR"/>
                     </connections>
@@ -41,22 +37,31 @@
                         <action selector="addSource:" destination="-1" eventType="touchUpInside" id="o6D-XL-mUB"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LvP-Ma-8WA">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <variation key="heightClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="-7" y="738" width="553" height="89"/>
+                    </variation>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Source Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qvb-d7-pvm">
+                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                    <variation key="heightClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="0.0" y="128" width="600" height="30"/>
+                    </variation>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Mu1-fk-3QO"/>
+                    </connections>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="qvb-d7-pvm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="1aX-e0-bZx"/>
-                <constraint firstAttribute="trailing" secondItem="B3O-ek-ppb" secondAttribute="trailing" constant="8" id="8g0-tB-7gt"/>
-                <constraint firstAttribute="trailing" secondItem="qvb-d7-pvm" secondAttribute="trailing" constant="8" id="AKu-8E-CRJ"/>
-                <constraint firstItem="qvb-d7-pvm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="230" id="In9-ku-Gq1">
-                    <variation key="heightClass=regular" constant="128"/>
-                </constraint>
                 <constraint firstAttribute="centerX" secondItem="oxx-t2-8bQ" secondAttribute="centerX" constant="-0.5" id="MnW-Xf-Ofb">
                     <variation key="heightClass=regular" constant="4.5"/>
                 </constraint>
-                <constraint firstItem="B3O-ek-ppb" firstAttribute="top" secondItem="qvb-d7-pvm" secondAttribute="bottom" constant="27" id="ap6-N0-ZzL">
-                    <variation key="heightClass=regular" constant="24"/>
-                </constraint>
-                <constraint firstItem="B3O-ek-ppb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="je8-NX-WXA"/>
                 <constraint firstAttribute="centerY" secondItem="oxx-t2-8bQ" secondAttribute="centerY" constant="156" id="v7g-mY-Tw1">
                     <variation key="heightClass=regular" constant="16"/>
                 </constraint>
@@ -65,34 +70,24 @@
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
             <variation key="default">
                 <mask key="subviews">
-                    <exclude reference="qvb-d7-pvm"/>
                     <exclude reference="B3O-ek-ppb"/>
                     <exclude reference="oxx-t2-8bQ"/>
+                    <exclude reference="LvP-Ma-8WA"/>
+                    <exclude reference="qvb-d7-pvm"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="1aX-e0-bZx"/>
-                    <exclude reference="AKu-8E-CRJ"/>
-                    <exclude reference="In9-ku-Gq1"/>
-                    <exclude reference="8g0-tB-7gt"/>
-                    <exclude reference="ap6-N0-ZzL"/>
-                    <exclude reference="je8-NX-WXA"/>
                     <exclude reference="MnW-Xf-Ofb"/>
                     <exclude reference="v7g-mY-Tw1"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular">
                 <mask key="subviews">
-                    <include reference="qvb-d7-pvm"/>
                     <include reference="B3O-ek-ppb"/>
                     <include reference="oxx-t2-8bQ"/>
+                    <include reference="LvP-Ma-8WA"/>
+                    <include reference="qvb-d7-pvm"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="1aX-e0-bZx"/>
-                    <include reference="AKu-8E-CRJ"/>
-                    <include reference="In9-ku-Gq1"/>
-                    <include reference="8g0-tB-7gt"/>
-                    <include reference="ap6-N0-ZzL"/>
-                    <include reference="je8-NX-WXA"/>
                     <include reference="MnW-Xf-Ofb"/>
                     <include reference="v7g-mY-Tw1"/>
                 </mask>
