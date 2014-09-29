@@ -42,49 +42,46 @@
     return self;
 }
 
-- (NSString *) sectionHeaderForIndex:(NSInteger) index {
-    return [self.sectionHeaders objectAtIndex: index];
+// Simple accessors
+
+- (TTCFeed *) feedForIndex:(NSUInteger) index {
+    return self.sources[index];
 }
 
-- (int) sectionCount {
-    return (int)[self.sectionHeaders count];
+- (TTCFeedCollection *) collectionForIndex:(NSUInteger) index {
+    return self.collections[index];
 }
 
-- (int) numberOfItemsForSection:(NSInteger)index {
-    return (index == 0) ? (int)[self.sources count] : (int)[self.collections count];
+// Manipulating / adding sources and collections
+
+- (void) deleteFeedAtIndex:(NSUInteger) index {
+    for (TTCFeedCollection* collection in self.collections)
+        [collection removeSource:self.sources[index]];
+    
+    [self.sources removeObjectAtIndex:index];
 }
 
-- (NSString *) sourceForIndexPath: (NSIndexPath*) index {
-    return (index.section == 0) ? [self.sources[index.item] title] : [self.collections[index.item] title];
+- (void) deleteCollectionAtIndex:(NSUInteger) index {
+    [self.collections removeObjectAtIndex:index];
 }
 
-- (void) deleteObjectAtIndexpath:(NSIndexPath *)indexPath {
-    // Removing source
-    if (indexPath.section == 0) {
-        // Remove this source from each collection it's in
-        for (TTCFeedCollection* collection in self.collections)
-            [collection removeSource:self.sources[indexPath.item]];
-        
-        // Then actually remove the source
-        [self.sources removeObjectAtIndex:indexPath.item];
-    } else {
-        // Remove both collection and entry in collection titles
-        [self.collections removeObjectAtIndex:indexPath.item];
-    }
+- (void) moveFeedAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
+    if (fromIndex == toIndex) return;
+    
+    TTCFeed* movedFeed = self.sources[fromIndex];
+    [self.sources removeObject:movedFeed];
+    [self.sources insertObject:movedFeed atIndex:toIndex];
+    
+    NSLog(@"Sources : %@\n", self.sources);
 }
 
-- (void) moveObjectAtIndexPath:(NSIndexPath*) fromPath toIndexPath: (NSIndexPath*) toPath {
-    if (toPath == fromPath) return;
-    if (fromPath.section == 0) {
-        id movedItem = self.sources[fromPath.item];
-        [self.sources removeObject:movedItem];
-        [self.sources insertObject:movedItem atIndex:toPath.item];
-    }
-    else {
-        id movedItem = self.collections[fromPath.item];
-        [self.collections removeObject:movedItem];
-        [self.collections insertObject:movedItem atIndex:toPath.item];
-    }
+- (void) moveCollectionAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
+    if (fromIndex == toIndex) return;
+
+    TTCFeedCollection* movedCollection = self.collections[fromIndex];
+    [self.collections removeObject:movedCollection];
+    [self.collections insertObject:movedCollection atIndex:toIndex];
+    NSLog(@"Collections : %@\n", self.collections);
 }
 
 - (void) addSource:(NSString *) source withURL:(NSString *) URL {
@@ -96,12 +93,28 @@
     [self.collections addObject:[[TTCFeedCollection alloc] initWithTitle:collection withFeeds:feeds]];
 }
 
+// Information functions
+
 - (NSUInteger) numberOfCollections {
     return (int) [self.collections count];
 }
 
 - (NSUInteger) numberOfSources {
     return (int) [self.sources count];
+}
+
+- (NSUInteger) numberOfArticles {
+    NSUInteger total = 0;
+    for (TTCFeed* feed in self.sources)
+        total += [feed.articles count];
+    return total;
+}
+
+- (NSUInteger) numberOfUnreadArticles {
+    NSUInteger total = 0;
+    for (TTCFeed* feed in self.sources)
+        total += [feed unreadArticles];
+    return total;
 }
 
 @end

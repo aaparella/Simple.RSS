@@ -31,4 +31,5 @@
 - (NSString *) description {
     return [NSString stringWithFormat:@"%@ %@", self.title, self.URL];
 }
+
 @end

@@ -10,8 +10,13 @@
 #import "TTCAddSourceViewController.h"
 #import "TTCAddCollectionViewController.h"
 #import "TTCFeedDataStore.h"
+#import "TTCArticlesViewController.h"
+#import "TTCFeed.h"
+#import "TTCFeedCollection.h"
 
 @interface TTCTableViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) NSArray* sectionHeaders;
 
 @end
 
@@ -21,6 +26,8 @@
     self = [super initWithStyle:style];
     
     if (self) {
+        self.sectionHeaders = @[@"Sources", @"Collections"];
+        
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
         
         self.navigationItem.title = @"iPrompter";
@@ -47,7 +54,6 @@
 
     TTCAddSourceViewController* addSource = [[TTCAddSourceViewController alloc] init];
     addSource.delegate = self;
-    
     TTCAddCollectionViewController* addCollection = [[TTCAddCollectionViewController alloc] init];
     addCollection.delegate = self;
     
@@ -83,39 +89,41 @@
 #pragma mark - Table view delegate
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[TTCFeedDataStore sharedStore] sectionHeaderForIndex:section];
+    return self.sectionHeaders[section];
 }
 
 // Push new view for a given feed source or collection of sources
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UIView* view = [[UIView alloc] initWithFrame:self.view.bounds];
-    view.backgroundColor = [UIColor whiteColor];
+    // Need to make into my own table view for displaying RSS articles
+    TTCArticlesViewController* avc = [[TTCArticlesViewController alloc] initWithFeed:[[TTCFeedDataStore sharedStore] feedForIndex:indexPath.item]];
     
-    UIViewController* vc = [[UIViewController alloc] init];
-    
-    vc.navigationItem.title = [[TTCFeedDataStore sharedStore] sourceForIndexPath:indexPath];
-    vc.view = view;
-    
-    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController pushViewController:avc animated:YES];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[TTCFeedDataStore sharedStore] sectionCount];
+    return [self.sectionHeaders count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Each section stored as an array of items that compose that section
-    return [[TTCFeedDataStore sharedStore] numberOfItemsForSection:section];
+    if (section == 0)
+        return [[TTCFeedDataStore sharedStore] numberOfSources];
+    
+    return [[TTCFeedDataStore sharedStore] numberOfCollections];
 }
 
 // Create cell for a given location in a given section
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [[TTCFeedDataStore sharedStore] sourceForIndexPath:indexPath];
+    if (indexPath.section == 0)
+        cell.textLabel.text = [[[TTCFeedDataStore sharedStore] feedForIndex:indexPath.item] title];
+    else
+        cell.textLabel.text = [[[TTCFeedDataStore sharedStore] collectionForIndex:indexPath.item] title];
+    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -124,7 +132,11 @@
 // Allow for deleting objects in the sections
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [[TTCFeedDataStore sharedStore] deleteObjectAtIndexpath:indexPath];
+        if (indexPath.section == 0)
+            [[TTCFeedDataStore sharedStore] deleteFeedAtIndex:indexPath.item];
+        else
+            [[TTCFeedDataStore sharedStore] deleteCollectionAtIndex:indexPath.item];
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // If we're inserting
@@ -133,7 +145,11 @@
 
 // Allow for rearranging of section entries
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    [[TTCFeedDataStore sharedStore] moveObjectAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
+    if (fromIndexPath.section == 0)
+        [[TTCFeedDataStore sharedStore] moveFeedAtIndex:fromIndexPath.item toIndex:toIndexPath.item];
+    else
+        [[TTCFeedDataStore sharedStore] moveCollectionAtIndex:fromIndexPath.item toIndex:toIndexPath.item];
+        
 }
 
 @end

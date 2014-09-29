@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class TTCFeed;
+@class TTCFeedCollection;
+
 @interface TTCFeedDataStore : NSObject
 
 @property (nonatomic, strong) NSMutableArray* sectionHeaders;
@@ -17,19 +20,21 @@
 
 + (instancetype) sharedStore;
 
-- (NSString *) sectionHeaderForIndex:(NSInteger) index;
-- (int) numberOfItemsForSection:(NSInteger) index;
-- (NSString *) sourceForIndexPath: (NSIndexPath*) index;
-- (int) sectionCount;
+- (void) deleteFeedAtIndex:(NSUInteger) index;
+- (void) deleteCollectionAtIndex:(NSUInteger) index;
 
-- (void) deleteObjectAtIndexpath: (NSIndexPath *) indexPath;
-- (void) moveObjectAtIndexPath: (NSIndexPath*) fromIndexPath
-                   toIndexPath: (NSIndexPath*) toIndexPath;
+- (void) moveFeedAtIndex:(NSUInteger) fromIndex toIndex:(NSUInteger) toIndex;
+- (void) moveCollectionAtIndex:(NSUInteger) fromIndex toIndex:(NSUInteger) toIndex;
 
 - (void) addSource:(NSString *) source withURL:(NSString *) URL;
 - (void) addCollection:(NSString *) collection withFeeds:(NSArray *) feeds;
 
 - (NSUInteger) numberOfCollections;
 - (NSUInteger) numberOfSources;
+- (NSUInteger) numberOfArticles;
+- (NSUInteger) numberOfUnreadArticles;
+
+- (TTCFeed *) feedForIndex:(NSUInteger) index;
+- (TTCFeedCollection *) collectionForIndex:(NSUInteger) index;
 
 @end

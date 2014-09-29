@@ -19,6 +19,7 @@
 		FA55F23F19CFF22E006CC119 /* iPrompterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55F23E19CFF22E006CC119 /* iPrompterTests.m */; };
 		FAA89F6419D4ECFF00C47330 /* TTCAddCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA89F6219D4ECFF00C47330 /* TTCAddCollectionViewController.m */; };
 		FAA89F6519D4ECFF00C47330 /* TTCAddCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA89F6319D4ECFF00C47330 /* TTCAddCollectionViewController.xib */; };
+		FAC790E319DA14EE005083F9 /* TTCArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC790E219DA14EE005083F9 /* TTCArticlesViewController.m */; };
 		FACD0A0319D3C17A00FA8C53 /* TTCFeedDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FACD0A0219D3C17A00FA8C53 /* TTCFeedDataStore.m */; };
 		FAE38E8119D7D8E10075952C /* TTCFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE38E8019D7D8E10075952C /* TTCFeed.m */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,8 @@
 		FAA89F6119D4ECFF00C47330 /* TTCAddCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCAddCollectionViewController.h; sourceTree = "<group>"; };
 		FAA89F6219D4ECFF00C47330 /* TTCAddCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCAddCollectionViewController.m; sourceTree = "<group>"; };
 		FAA89F6319D4ECFF00C47330 /* TTCAddCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTCAddCollectionViewController.xib; sourceTree = "<group>"; };
+		FAC790E119DA14EE005083F9 /* TTCArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCArticlesViewController.h; sourceTree = "<group>"; };
+		FAC790E219DA14EE005083F9 /* TTCArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCArticlesViewController.m; sourceTree = "<group>"; };
 		FACD0A0119D3C17A00FA8C53 /* TTCFeedDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCFeedDataStore.h; sourceTree = "<group>"; };
 		FACD0A0219D3C17A00FA8C53 /* TTCFeedDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCFeedDataStore.m; sourceTree = "<group>"; };
 		FAE38E7F19D7D8E10075952C /* TTCFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCFeed.h; sourceTree = "<group>"; };
@@ -106,6 +109,8 @@
 				FA4CF70B19CFF68F004B6EA6 /* TTCTableViewController.m */,
 				FACD0A0119D3C17A00FA8C53 /* TTCFeedDataStore.h */,
 				FACD0A0219D3C17A00FA8C53 /* TTCFeedDataStore.m */,
+				FAC790E119DA14EE005083F9 /* TTCArticlesViewController.h */,
+				FAC790E219DA14EE005083F9 /* TTCArticlesViewController.m */,
 				FA28282519D37AD500640A2A /* TTCAddSourceViewController.h */,
 				FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */,
 				FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */,
@@ -259,6 +264,7 @@
 				FAE38E8119D7D8E10075952C /* TTCFeed.m in Sources */,
 				FACD0A0319D3C17A00FA8C53 /* TTCFeedDataStore.m in Sources */,
 				FA55F22519CFF22E006CC119 /* main.m in Sources */,
+				FAC790E319DA14EE005083F9 /* TTCArticlesViewController.m in Sources */,
 				FA28282819D37AD500640A2A /* TTCAddSourceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
