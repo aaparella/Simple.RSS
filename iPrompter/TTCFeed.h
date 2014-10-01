@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TTCFeed : NSObject
+@interface TTCFeed : NSObject <NSCoding>
 {
     NSUInteger unreadArticles;
 }

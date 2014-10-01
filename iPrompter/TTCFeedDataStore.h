@@ -20,6 +20,8 @@
 
 + (instancetype) sharedStore;
 
+- (BOOL) storeData;
+
 - (void) deleteFeedAtIndex:(NSUInteger) index;
 - (void) deleteCollectionAtIndex:(NSUInteger) index;
 

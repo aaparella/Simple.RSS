@@ -20,6 +20,16 @@
     return self;
 }
 
+- (instancetype) initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        _title = [aDecoder decodeObjectForKey:@"feedTitle"];
+        _URL = [aDecoder decodeObjectForKey:@"URL"];
+    }
+    
+    return self;
+}
+
 - (void) setUnreadArticles:(NSUInteger)unread {
     unreadArticles = unread;
 }
@@ -30,6 +40,11 @@
 
 - (NSString *) description {
     return [NSString stringWithFormat:@"%@ %@", self.title, self.URL];
+}
+
+- (void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.title forKey:@"feedTitle"];
+    [aCoder encodeObject:self.URL   forKey:@"URL"];
 }
 
 @end

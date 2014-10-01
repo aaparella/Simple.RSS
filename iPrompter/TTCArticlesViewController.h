@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TTCFeed.h"
+
+@class TTCFeed;
 
 @interface TTCArticlesViewController : UITableViewController
 

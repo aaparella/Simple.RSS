@@ -13,6 +13,7 @@
 #import "TTCArticlesViewController.h"
 #import "TTCFeed.h"
 #import "TTCFeedCollection.h"
+#import "TTCCollectionViewController.h"
 
 @interface TTCTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -94,11 +95,13 @@
 
 // Push new view for a given feed source or collection of sources
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    // Need to make into my own table view for displaying RSS articles
-    TTCArticlesViewController* avc = [[TTCArticlesViewController alloc] initWithFeed:[[TTCFeedDataStore sharedStore] feedForIndex:indexPath.item]];
-    
-    [self.navigationController pushViewController:avc animated:YES];
+    if (indexPath.section == 0) {
+        TTCArticlesViewController *avc = [[TTCArticlesViewController alloc] initWithFeed:[[TTCFeedDataStore sharedStore] feedForIndex:indexPath.item]];
+        [self.navigationController pushViewController:avc animated:YES];
+    } else {
+        TTCCollectionViewController *tvc = [[TTCCollectionViewController alloc] initWithCollection:[[TTCFeedDataStore sharedStore] collectionForIndex:indexPath.item]];
+        [self.navigationController pushViewController:tvc animated:YES];
+    }
 }
 
 #pragma mark - Table view data source

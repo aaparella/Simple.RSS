@@ -24,6 +24,14 @@
     return [self initWithTitle:title withFeeds:@[]];
 }
 
+- (instancetype) initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self)
+        self.title = [aDecoder decodeObjectForKey:@"collectionTitle"];
+    
+    return self;
+}
+
 - (NSUInteger) numberOfFeeds {
     return [self.feeds count];
 }
@@ -32,4 +40,11 @@
     [self.feeds removeObject:source];
 }
 
+- (void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.title forKey:@"collectionTitle"];
+}
+
+- (NSString *) description {
+    return [NSString stringWithFormat:@"%@ %@", self.title, self.feeds];
+}
 @end

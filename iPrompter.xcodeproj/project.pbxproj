@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA1C145019DCAE4C0049E888 /* TTCCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1C144F19DCAE4C0049E888 /* TTCCollectionViewController.m */; };
 		FA28282819D37AD500640A2A /* TTCAddSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */; };
 		FA28282919D37AD500640A2A /* TTCAddSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */; };
 		FA304CB119D887C40086569E /* TTCFeedCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA304CB019D887C40086569E /* TTCFeedCollection.m */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA1C144E19DCAE4C0049E888 /* TTCCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCCollectionViewController.h; sourceTree = "<group>"; };
+		FA1C144F19DCAE4C0049E888 /* TTCCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCCollectionViewController.m; sourceTree = "<group>"; };
 		FA28282519D37AD500640A2A /* TTCAddSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCAddSourceViewController.h; sourceTree = "<group>"; };
 		FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCAddSourceViewController.m; sourceTree = "<group>"; };
 		FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTCAddSourceViewController.xib; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 				FACD0A0219D3C17A00FA8C53 /* TTCFeedDataStore.m */,
 				FAC790E119DA14EE005083F9 /* TTCArticlesViewController.h */,
 				FAC790E219DA14EE005083F9 /* TTCArticlesViewController.m */,
+				FA1C144E19DCAE4C0049E888 /* TTCCollectionViewController.h */,
+				FA1C144F19DCAE4C0049E888 /* TTCCollectionViewController.m */,
 				FA28282519D37AD500640A2A /* TTCAddSourceViewController.h */,
 				FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */,
 				FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */,
@@ -263,6 +268,7 @@
 				FA4CF70C19CFF68F004B6EA6 /* TTCTableViewController.m in Sources */,
 				FAE38E8119D7D8E10075952C /* TTCFeed.m in Sources */,
 				FACD0A0319D3C17A00FA8C53 /* TTCFeedDataStore.m in Sources */,
+				FA1C145019DCAE4C0049E888 /* TTCCollectionViewController.m in Sources */,
 				FA55F22519CFF22E006CC119 /* main.m in Sources */,
 				FAC790E319DA14EE005083F9 /* TTCArticlesViewController.m in Sources */,
 				FA28282819D37AD500640A2A /* TTCAddSourceViewController.m in Sources */,

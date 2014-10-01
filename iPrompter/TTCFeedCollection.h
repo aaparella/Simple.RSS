@@ -10,7 +10,7 @@
 
 @class TTCFeed;
 
-@interface TTCFeedCollection : NSObject
+@interface TTCFeedCollection : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSMutableArray *feeds;

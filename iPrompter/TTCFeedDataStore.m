@@ -26,20 +26,30 @@
     
     self = [super init];
     if (self) {
-        // Test data only, not going to be there in the end
+        self.sources = [NSKeyedUnarchiver unarchiveObjectWithFile:[self feedStorePath]];
+        
+        if (!self.sources) {
+            NSLog(@"Loading new data for sources");
+            self.sources = [[NSMutableArray alloc] init];
+        }
+        
+        self.collections = [NSKeyedUnarchiver unarchiveObjectWithFile:[self collectionStorePath]];
+        if (!self.collections) {
+            NSLog(@"Loading new data for collections");
+            self.collections = [[NSMutableArray alloc] init];
+        }
+    
         self.sectionHeaders = [[NSMutableArray alloc] initWithArray:@[@"Sources", @"Collections"]];
-        self.sources        = [[NSMutableArray alloc] init];
-        
-        [self.sources addObject:[[TTCFeed alloc] initWithTitle:@"Lifehacker" withURL:@"http://lifehacker.com"]];
-        [self.sources addObject:[[TTCFeed alloc] initWithTitle:@"Daring Fireball" withURL:@"http://daringfireball.net"]];
-        [self.sources addObject:[[TTCFeed alloc] initWithTitle:@"The Verge" withURL:@"http://theverge.com"]];
-        
-        self.collections = [[NSMutableArray alloc] init];
-        [self.collections addObject:[[TTCFeedCollection alloc] initWithTitle:@"Technology" withFeeds:@[]]];
-        [self.collections addObject:[[TTCFeedCollection alloc] initWithTitle:@"Design" withFeeds:@[]]];
     }
     
+    NSLog(@"Done initializing, status report. SOURCES : %@ \n COLLECTIONS : %@", self.sources, self.collections);
+    
     return self;
+}
+
+- (BOOL) storeData {
+    return [NSKeyedArchiver archiveRootObject:self.sources toFile:[self feedStorePath]] \
+        && [NSKeyedArchiver archiveRootObject:self.collections toFile:[self collectionStorePath]];
 }
 
 // Simple accessors
@@ -115,6 +125,20 @@
     for (TTCFeed* feed in self.sources)
         total += [feed unreadArticles];
     return total;
+}
+
+- (NSString *) feedStorePath {
+    NSArray *documentDictionaries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [documentDictionaries firstObject];
+    
+    return [path stringByAppendingString:@"feeds.archive"];
+}
+
+- (NSString *) collectionStorePath {
+    NSArray *documentDictionaries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [documentDictionaries firstObject];
+    
+    return [path stringByAppendingString:@"collections.archive"];
 }
 
 @end
