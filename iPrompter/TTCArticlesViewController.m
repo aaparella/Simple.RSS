@@ -8,8 +8,9 @@
 
 #import "TTCArticlesViewController.h"
 #import "TTCFeed.h"
+#import "RSSItem.h"
 
-@interface TTCArticlesViewController ()
+@interface TTCArticlesViewController () <UITableViewDataSource>
 
 @end
 
@@ -19,8 +20,12 @@
     self = [super init];
     if (self) {
         self.feed = feed;
+        [self.feed updateArticles];
+
         [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"];
+        
         self.navigationItem.title = self.feed.title;
+        self.tableView.delegate = self;
     }
     
     return self;
@@ -53,11 +58,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
-    
 
-    // Configure the cell...
+    NSArray* articles = [self.feed articles];
+    cell.textLabel.text = ((RSSItem *)articles[indexPath.item]).title;
     
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSURLRequest* req = [[NSURLRequest alloc] initWithURL:((RSSItem *)self.feed.articles[indexPath.item]).link];
+    
+    UIWebView *wv = [[UIWebView alloc] init];
+    [wv loadRequest:req];
+    
+    UIViewController* vc = [[UIViewController alloc] init];
+    vc.navigationItem.title = ((RSSItem *)self.feed.articles[indexPath.item]).title;
+    vc.view = wv;
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*

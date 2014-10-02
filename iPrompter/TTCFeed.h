@@ -23,4 +23,6 @@
 - (NSUInteger) unreadArticles;
 - (void) setUnreadArticles:(NSUInteger) unread;
 
+- (void) updateArticles;
+
 @end

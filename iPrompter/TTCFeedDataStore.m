@@ -41,9 +41,7 @@
     
         self.sectionHeaders = [[NSMutableArray alloc] initWithArray:@[@"Sources", @"Collections"]];
     }
-    
-    NSLog(@"Done initializing, status report. SOURCES : %@ \n COLLECTIONS : %@", self.sources, self.collections);
-    
+        
     return self;
 }
 
