@@ -28,7 +28,6 @@
     
     if (self) {
         self.sectionHeaders = @[@"Sources", @"Collections"];
-        
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
         
         self.navigationItem.title = @"iPrompter";
@@ -36,18 +35,17 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                   target:self action:@selector(newEntry)];
+        
+        self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                            target:self
+                                                                            action:@selector(refreshFeeds:)]];
     }
     
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) refreshFeeds:(id) sender {
+    [[TTCFeedDataStore sharedStore] updateFeeds];
 }
 
 // Adding a new source

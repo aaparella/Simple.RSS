@@ -32,7 +32,6 @@
         _URL = [aDecoder decodeObjectForKey:@"URL"];
         _articles = [aDecoder decodeObjectForKey:@"articles"];
         
-        NSLog(@"After decoding %@", _articles);
         [self updateArticles];
     }
     
@@ -41,16 +40,17 @@
 
 - (BOOL) articleAlreadyContained:(RSSItem *) feedItem {
     for (RSSItem *item in self.articles)
-        if ([item isEqual:feedItem])
+        // Sometimes the link cannot be fetched, better (I think) to compare titles
+        if ([item.title isEqual:feedItem.title])
             return YES;
-    
+        
     return NO;
 }
 
 - (void) updateArticles {
     NSURLRequest *req = [[NSURLRequest alloc] initWithURL:self.URL];
     
-    [RSSParser parseRSSFeedForRequest:req success:^(NSArray *feedItems) {
+    [RSSParser parseRSSFeedForRequest:req success:^(NSArray *feedItems) {        
         NSUInteger newArticles = 0;
         for (RSSItem *newItem in feedItems) {
             if (![self articleAlreadyContained:newItem]) {
@@ -59,7 +59,7 @@
             }
         }
         
-        NSLog(@"%@ feed updated with %lu new articles", self.title, newArticles);
+        NSLog(@"%@ feed updated with %lu new articles", self.title, (unsigned long)newArticles);
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];

@@ -46,8 +46,8 @@
 }
 
 - (BOOL) storeData {
-    return [NSKeyedArchiver archiveRootObject:self.sources toFile:[self feedStorePath]] \
-        && [NSKeyedArchiver archiveRootObject:self.collections toFile:[self collectionStorePath]];
+    return ([NSKeyedArchiver archiveRootObject:self.sources toFile:[self feedStorePath]] && \
+            [NSKeyedArchiver archiveRootObject:self.collections toFile:[self collectionStorePath]]);
 }
 
 // Simple accessors
@@ -61,6 +61,11 @@
 }
 
 // Manipulating / adding sources and collections
+
+- (void) updateFeeds {
+    for (TTCFeed *feed in self.sources)
+        [feed updateArticles];
+}
 
 - (void) deleteFeedAtIndex:(NSUInteger) index {
     for (TTCFeedCollection* collection in self.collections)
@@ -79,8 +84,6 @@
     TTCFeed* movedFeed = self.sources[fromIndex];
     [self.sources removeObject:movedFeed];
     [self.sources insertObject:movedFeed atIndex:toIndex];
-    
-    NSLog(@"Sources : %@\n", self.sources);
 }
 
 - (void) moveCollectionAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
@@ -89,12 +92,10 @@
     TTCFeedCollection* movedCollection = self.collections[fromIndex];
     [self.collections removeObject:movedCollection];
     [self.collections insertObject:movedCollection atIndex:toIndex];
-    NSLog(@"Collections : %@\n", self.collections);
 }
 
 - (void) addSource:(NSString *) source withURL:(NSString *) URL {
     [self.sources addObject:[[TTCFeed alloc] initWithTitle:source withURL:URL]];
-    NSLog(@"%@\n", self.sources);
 }
 
 - (void) addCollection:(NSString *)collection withFeeds:(NSArray *) feeds {
@@ -126,17 +127,12 @@
 }
 
 - (NSString *) feedStorePath {
-    NSArray *documentDictionaries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = [documentDictionaries firstObject];
-    
-    return [path stringByAppendingString:@"feeds.archive"];
+    return [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"feeds.archive"];
+
 }
 
 - (NSString *) collectionStorePath {
-    NSArray *documentDictionaries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = [documentDictionaries firstObject];
-    
-    return [path stringByAppendingString:@"collections.archive"];
+    return [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"collections.archive"];
 }
 
 @end
