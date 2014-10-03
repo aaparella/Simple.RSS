@@ -30,15 +30,11 @@
         self.sectionHeaders = @[@"Sources", @"Collections"];
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
         
-        self.navigationItem.title = @"iPrompter";
+        self.navigationItem.title = @"Simple.rss";
         self.navigationItem.leftBarButtonItem = self.editButtonItem;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                   target:self action:@selector(newEntry)];
-        
-        self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                            target:self
-                                                                            action:@selector(refreshFeeds:)]];
         
         self.refreshControl = [[UIRefreshControl alloc] init];
         [self.refreshControl addTarget:self action:@selector(refreshFeeds:)
@@ -53,12 +49,12 @@
     [(UIRefreshControl *)sender endRefreshing];
 }
 
-// Adding a new source
+// Adding a new source, present addSource / addCollection view controllers
 - (void) newEntry {
 
     TTCAddSourceViewController* addSource = [[TTCAddSourceViewController alloc] init];
-    addSource.delegate = self;
     TTCAddCollectionViewController* addCollection = [[TTCAddCollectionViewController alloc] init];
+    addSource.delegate = self;
     addCollection.delegate = self;
     
     UITabBarController* tbc = [[UITabBarController alloc] init];

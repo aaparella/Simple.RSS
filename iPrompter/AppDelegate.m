@@ -26,7 +26,6 @@
     
     UINavigationController* nvc = [[UINavigationController alloc] initWithRootViewController:tvc];
     self.window.rootViewController = nvc;
-    [nvc setToolbarHidden:NO];
     
     // Bookkeeping stuff
     self.window.backgroundColor = [UIColor whiteColor];
