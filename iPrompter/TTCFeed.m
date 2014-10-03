@@ -41,9 +41,9 @@
 - (BOOL) articleAlreadyContained:(RSSItem *) feedItem {
     for (RSSItem *item in self.articles)
         // Sometimes the link cannot be fetched, better (I think) to compare titles
-        if ([item.guid isEqual:feedItem.guid])
+        if ([item.title isEqual:feedItem.title])
             return YES;
-        
+    
     return NO;
 }
 
