@@ -39,6 +39,10 @@
         self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                                                             target:self
                                                                             action:@selector(refreshFeeds:)]];
+        
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.refreshControl addTarget:self action:@selector(refreshFeeds:)
+                      forControlEvents:UIControlEventValueChanged];
     }
     
     return self;
@@ -46,6 +50,7 @@
 
 - (void) refreshFeeds:(id) sender {
     [[TTCFeedDataStore sharedStore] updateFeeds];
+    [(UIRefreshControl *)sender endRefreshing];
 }
 
 // Adding a new source

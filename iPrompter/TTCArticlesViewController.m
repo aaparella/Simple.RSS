@@ -21,6 +21,9 @@
     if (self) {
         self.feed = feed;
         [self.feed updateArticles];
+        
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.refreshControl addTarget:self action:@selector(updateFeed:) forControlEvents:UIControlEventValueChanged];
 
         [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"];
         
@@ -45,6 +48,13 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void) updateFeed:(id) sender {
+    [self.feed updateArticles];
+    [self.tableView reloadData];
+    
+    [(UIRefreshControl *)sender endRefreshing];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -66,16 +76,26 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSURLRequest* req = [[NSURLRequest alloc] initWithURL:((RSSItem *)self.feed.articles[indexPath.item]).link];
+    NSURL *link = ((RSSItem *)self.feed.articles[indexPath.item]).link;
     
-    UIWebView *wv = [[UIWebView alloc] init];
-    [wv loadRequest:req];
-    
-    UIViewController* vc = [[UIViewController alloc] init];
-    vc.navigationItem.title = ((RSSItem *)self.feed.articles[indexPath.item]).title;
-    vc.view = wv;
-    
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([link isEqual:[NSURL URLWithString:@""]]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Link"
+                                                        message:@"We couldn't find a link for that article :("
+                                                       delegate:nil cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+    } else {
+        NSURLRequest* req = [[NSURLRequest alloc] initWithURL:link];
+        
+        UIWebView *wv = [[UIWebView alloc] init];
+        [wv loadRequest:req];
+        
+        UIViewController* vc = [[UIViewController alloc] init];
+        vc.navigationItem.title = ((RSSItem *)self.feed.articles[indexPath.item]).title;
+        vc.view = wv;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 /*
