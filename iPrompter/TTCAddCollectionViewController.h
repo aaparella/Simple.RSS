@@ -13,8 +13,6 @@
 
 @interface TTCAddCollectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, weak) TTCTableViewController* delegate;
-
 - (void)addCollection:(id)sender;
 
 @end
