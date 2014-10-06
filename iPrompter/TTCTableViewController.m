@@ -51,6 +51,7 @@
 // Adding a new source, present addSource / addCollection view controllers
 - (void) newEntry {
     TTCAddItemViewController *addVC = [[TTCAddItemViewController alloc] init];
+    addVC.dismissDelegate = self;
     addVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                             target:self
                                                                                             action:@selector(dismissViewController)];
@@ -61,6 +62,8 @@
 }
 
 - (void) addSource:(NSString *) sourceName withURL:(NSString *) URL {
+    NSLog(@"Something should reach this point");
+    
     [[TTCFeedDataStore sharedStore] addSource:sourceName withURL:URL];
     NSIndexPath* index = [NSIndexPath indexPathForItem:[[TTCFeedDataStore sharedStore] numberOfSources] - 1 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
@@ -74,6 +77,7 @@
 
 // Because we can't pass arguments to @selector()'s for whatever reason
 - (void) dismissViewController {
+    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

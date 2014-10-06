@@ -23,7 +23,7 @@
                         <outlet property="delegate" destination="-1" id="GMI-Q9-wt5"/>
                     </connections>
                 </textField>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cvP-Ac-0xs">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cvP-Ac-0xs">
                     <rect key="frame" x="0.0" y="215" width="600" height="333"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
@@ -33,6 +33,7 @@
                 <constraint firstAttribute="trailing" secondItem="5eQ-5u-4es" secondAttribute="trailing" constant="8" id="3Al-Vb-M4f"/>
                 <constraint firstAttribute="bottom" secondItem="cvP-Ac-0xs" secondAttribute="bottom" constant="52" id="8RG-cz-ZgZ"/>
                 <constraint firstItem="5eQ-5u-4es" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="119" id="9pw-E4-LK6"/>
+                <constraint firstItem="cvP-Ac-0xs" firstAttribute="top" secondItem="5eQ-5u-4es" secondAttribute="bottom" constant="66" id="TJf-Yt-vLs"/>
                 <constraint firstItem="5eQ-5u-4es" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="ePy-Cv-oLS"/>
                 <constraint firstItem="cvP-Ac-0xs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="emg-3d-S9q"/>
                 <constraint firstAttribute="trailing" secondItem="cvP-Ac-0xs" secondAttribute="trailing" id="tOd-Rd-69a"/>

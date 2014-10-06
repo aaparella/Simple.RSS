@@ -8,6 +8,7 @@
 
 #import "TTCAddSourceViewController.h"
 #import "TTCTableViewController.h"
+#import "TTCFeedDataStore.h"
 
 @interface TTCAddSourceViewController () <UITextFieldDelegate>
 
@@ -42,10 +43,7 @@
 }
 
 - (void) addSource:(id)sender {
-    [self.view endEditing:YES];
-    
-    [self.delegate addSource:self.sourceNameField.text withURL:self.sourceURLField.text];
-    [self.delegate dismissViewController];
+    [[TTCFeedDataStore sharedStore] addSource:self.sourceNameField.text withURL:self.sourceURLField.text];
 }
 
 /*

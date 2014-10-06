@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TTCTableViewController.h"
 
 @interface TTCAddItemViewController : UITabBarController
+
+@property (nonatomic, weak) TTCTableViewController *dismissDelegate;
 
 @end

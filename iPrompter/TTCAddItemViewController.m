@@ -20,7 +20,6 @@
 - (instancetype) init {
     self = [super init];
     if (self) {
-        [self setViewControllers:@[[[TTCAddSourceViewController alloc] init], [[TTCAddCollectionViewController alloc] init]] animated:YES];
         [self addChildViewController:[[TTCAddSourceViewController alloc] init]];
         [self addChildViewController:[[TTCAddCollectionViewController alloc] init]];
         
@@ -45,6 +44,8 @@
         [(TTCAddSourceViewController *)self.selectedViewController addSource:self];
     else
         [(TTCAddCollectionViewController *)self.selectedViewController addCollection:self];
+    
+    [self.dismissDelegate dismissViewController];
 }
 
 /*

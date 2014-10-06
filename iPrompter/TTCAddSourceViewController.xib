@@ -6,8 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TTCAddSourceViewController">
             <connections>
-                <outlet property="sourceNameField" destination="qvb-d7-pvm" id="X14-xP-5Pl"/>
-                <outlet property="sourceURLField" destination="B3O-ek-ppb" id="GFM-Xk-G1G"/>
+                <outlet property="sourceNameField" destination="qvb-d7-pvm" id="PKv-PF-dK5"/>
+                <outlet property="sourceURLField" destination="B3O-ek-ppb" id="mDF-cP-35c"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

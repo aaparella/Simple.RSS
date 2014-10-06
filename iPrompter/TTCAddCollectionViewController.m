@@ -32,11 +32,7 @@
 }
 
 - (void)addCollection:(id)sender {
-    // To make the animation for dismissing keyboard cleaner
-    [self.view endEditing:YES];
-    
-    [self.delegate addCollection:self.collectionNameField.text];
-    [self.delegate dismissViewController];
+    [[TTCFeedDataStore sharedStore] addCollection:self.collectionNameField.text withFeeds:@[]];
 }
 
 - (void)viewDidLoad {
