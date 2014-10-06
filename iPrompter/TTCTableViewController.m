@@ -7,13 +7,12 @@
 //
 
 #import "TTCTableViewController.h"
-#import "TTCAddSourceViewController.h"
-#import "TTCAddCollectionViewController.h"
 #import "TTCFeedDataStore.h"
 #import "TTCArticlesViewController.h"
 #import "TTCFeed.h"
 #import "TTCFeedCollection.h"
 #import "TTCCollectionViewController.h"
+#import "TTCAddItemViewController.h"
 
 @interface TTCTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -51,20 +50,12 @@
 
 // Adding a new source, present addSource / addCollection view controllers
 - (void) newEntry {
-
-    TTCAddSourceViewController* addSource = [[TTCAddSourceViewController alloc] init];
-    TTCAddCollectionViewController* addCollection = [[TTCAddCollectionViewController alloc] init];
-    addSource.delegate = self;
-    addCollection.delegate = self;
+    TTCAddItemViewController *addVC = [[TTCAddItemViewController alloc] init];
+    addVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                            target:self
+                                                                                            action:@selector(dismissViewController)];
     
-    UITabBarController* tbc = [[UITabBarController alloc] init];
-    tbc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                                         target:self
-                                                                                         action:@selector(dismissViewController)];
-    [tbc addChildViewController:addSource];
-    [tbc addChildViewController:addCollection];
-    
-    UINavigationController* nvc = [[UINavigationController alloc] initWithRootViewController:tbc];
+    UINavigationController* nvc = [[UINavigationController alloc] initWithRootViewController:addVC];
     
     [self presentViewController:nvc animated:YES completion:nil];
 }

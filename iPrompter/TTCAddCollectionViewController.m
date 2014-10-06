@@ -8,6 +8,8 @@
 
 #import "TTCAddCollectionViewController.h"
 #import "TTCTableViewController.h"
+#import "TTCFeedDataStore.h"
+#import "TTCFeed.h"
 
 @interface TTCAddCollectionViewController () <UITextFieldDelegate>
 
@@ -29,8 +31,7 @@
     return self;
 }
 
-- (IBAction)addCollection:(id)sender {
-    
+- (void)addCollection:(id)sender {
     // To make the animation for dismissing keyboard cleaner
     [self.view endEditing:YES];
     
@@ -54,14 +55,18 @@
     return YES;
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - UITableViewDataSource
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[TTCFeedDataStore sharedStore] numberOfSources];
 }
-*/
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    cell.textLabel.text = [[[TTCFeedDataStore sharedStore] feedForIndex:indexPath.row] title];
+    
+    return cell;
+}
 
 @end

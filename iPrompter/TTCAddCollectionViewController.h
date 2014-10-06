@@ -11,8 +11,10 @@
 // Because we don't need to actually send any messages
 @class TTCTableViewController;
 
-@interface TTCAddCollectionViewController : UIViewController
+@interface TTCAddCollectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) TTCTableViewController* delegate;
+
+- (void)addCollection:(id)sender;
 
 @end

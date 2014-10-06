@@ -41,7 +41,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)addSource:(id)sender {
+- (void) addSource:(id)sender {
     [self.view endEditing:YES];
     
     [self.delegate addSource:self.sourceNameField.text withURL:self.sourceURLField.text];

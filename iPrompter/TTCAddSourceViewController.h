@@ -13,4 +13,6 @@
 
 @property (nonatomic, weak) TTCTableViewController* delegate;
 
+- (void) addSource:(id)sender;
+
 @end

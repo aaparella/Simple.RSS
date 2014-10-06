@@ -34,23 +34,12 @@
                         <outlet property="delegate" destination="-1" id="mkF-Bm-ZjR"/>
                     </connections>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxx-t2-8bQ">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <state key="normal" title="Add Source">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="addSource:" destination="-1" eventType="touchUpInside" id="o6D-XL-mUB"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="B3O-ek-ppb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="46" id="DGD-qY-6q5"/>
-                <constraint firstAttribute="centerY" secondItem="oxx-t2-8bQ" secondAttribute="centerY" constant="16" id="Q6U-QJ-Ens"/>
                 <constraint firstAttribute="trailing" secondItem="B3O-ek-ppb" secondAttribute="trailing" constant="54" id="QnK-EQ-lai"/>
                 <constraint firstItem="qvb-d7-pvm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="128" id="S0C-Qj-d8F"/>
-                <constraint firstAttribute="centerX" secondItem="oxx-t2-8bQ" secondAttribute="centerX" constant="4.5" id="ViM-oT-hTB"/>
                 <constraint firstItem="qvb-d7-pvm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="46" id="cvA-3A-qxD"/>
                 <constraint firstItem="B3O-ek-ppb" firstAttribute="top" secondItem="qvb-d7-pvm" secondAttribute="bottom" constant="35" id="iFl-gr-GEs"/>
                 <constraint firstAttribute="trailing" secondItem="qvb-d7-pvm" secondAttribute="trailing" constant="54" id="z3A-Tb-uLD"/>
@@ -61,7 +50,6 @@
                 <mask key="subviews">
                     <exclude reference="qvb-d7-pvm"/>
                     <exclude reference="B3O-ek-ppb"/>
-                    <exclude reference="oxx-t2-8bQ"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="DGD-qY-6q5"/>
@@ -70,15 +58,12 @@
                     <exclude reference="S0C-Qj-d8F"/>
                     <exclude reference="cvA-3A-qxD"/>
                     <exclude reference="z3A-Tb-uLD"/>
-                    <exclude reference="Q6U-QJ-Ens"/>
-                    <exclude reference="ViM-oT-hTB"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular">
                 <mask key="subviews">
                     <include reference="qvb-d7-pvm"/>
                     <include reference="B3O-ek-ppb"/>
-                    <include reference="oxx-t2-8bQ"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="DGD-qY-6q5"/>
@@ -87,8 +72,6 @@
                     <include reference="S0C-Qj-d8F"/>
                     <include reference="cvA-3A-qxD"/>
                     <include reference="z3A-Tb-uLD"/>
-                    <include reference="Q6U-QJ-Ens"/>
-                    <include reference="ViM-oT-hTB"/>
                 </mask>
             </variation>
         </view>
