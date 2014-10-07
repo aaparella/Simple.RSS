@@ -81,8 +81,6 @@
         newArticles++;
         [self.articles addObject:item];
     }
-    NSLog(@"%@", item.link);
-    NSLog(@"%@ updated with %d new articles", self.title, newArticles);
 }
 
 @end
