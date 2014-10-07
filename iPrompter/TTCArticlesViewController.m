@@ -8,7 +8,8 @@
 
 #import "TTCArticlesViewController.h"
 #import "TTCFeed.h"
-#import "RSSItem.h"
+#import "TTCArticleCell.h"
+#import "MWFeedItem.h"
 
 @interface TTCArticlesViewController () <UITableViewDataSource>
 
@@ -36,6 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"TTCArticleCell" bundle:nil] forCellReuseIdentifier:@"TTCArticleCell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,18 +63,18 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    TTCArticleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TTCArticleCell" forIndexPath:indexPath];
     
-    NSArray* articles = [self.feed articles];
-    cell.textLabel.text = ((RSSItem *)articles[indexPath.item]).title;
+    MWFeedItem *feedItem = self.feed.articles[indexPath.row];
+    
+    cell.articleTitleLabel.text = feedItem.title;
+    cell.datePublishedLabel.text = feedItem.date.description;
     
     return cell;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
-    
-    NSURL *link = ((RSSItem *)self.feed.articles[indexPath.item]).link;
+    NSURL *link = [NSURL URLWithString:((MWFeedItem *)self.feed.articles[indexPath.row]).link];
     
     if ([link isEqual:[NSURL URLWithString:@""]]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Link"
@@ -87,7 +89,7 @@
         [wv loadRequest:req];
         
         UIViewController* vc = [[UIViewController alloc] init];
-        vc.navigationItem.title = ((RSSItem *)self.feed.articles[indexPath.item]).title;
+        vc.navigationItem.title = ((MWFeedItem *)self.feed.articles[indexPath.item]).title;
         vc.view = wv;
         
         [self.navigationController pushViewController:vc animated:YES];

@@ -3,7 +3,7 @@
 
 target "iPrompter" do
 
-pod 'BlockRSSParser', '~> 2.1'
+pod 'MWFeedParser', '~> 1.0.1'
 
 end
 

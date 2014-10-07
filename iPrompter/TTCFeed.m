@@ -7,8 +7,11 @@
 //
 
 #import "TTCFeed.h"
-#import "RSSItem.h"
-#import "RSSParser.h"
+#import "MWFeedParser.h"
+
+@interface TTCFeed() <MWFeedParserDelegate>
+
+@end
 
 @implementation TTCFeed
 
@@ -38,31 +41,20 @@
     return self;
 }
 
-- (BOOL) articleAlreadyContained:(RSSItem *) feedItem {
-    for (RSSItem *item in self.articles)
-        // Sometimes the link cannot be fetched, better (I think) to compare titles
-        if ([item.title isEqual:feedItem.title])
+- (BOOL) articleAlreadyContained:(MWFeedItem *) feedItem {
+    for (MWFeedItem *item in self.articles)
+        if (item.link == feedItem.link)
             return YES;
     
     return NO;
 }
 
 - (void) updateArticles {
-    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:self.URL];
-    
-    [RSSParser parseRSSFeedForRequest:req success:^(NSArray *feedItems) {        
-        NSUInteger newArticles = 0;
-        for (RSSItem *newItem in feedItems) {
-            if (![self articleAlreadyContained:newItem]) {
-                [self.articles addObject:newItem];
-                newArticles++;
-            }
-        }
-        
-        NSLog(@"%@ feed updated with %lu new articles", self.title, (unsigned long)newArticles);
-    } failure:^(NSError *error) {
-        NSLog(@"%@", error);
-    }];
+    MWFeedParser *parser = [[MWFeedParser alloc] initWithFeedURL:self.URL];
+    parser.delegate = self;
+    parser.feedParseType = ParseTypeFull;
+    parser.connectionType = ConnectionTypeAsynchronously;
+    [parser parse];
 }
 
 - (void) setUnreadArticles:(NSUInteger)unread {
@@ -78,9 +70,19 @@
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.title forKey:@"feedTitle"];
-    [aCoder encodeObject:self.URL   forKey:@"URL"];
+    [aCoder encodeObject:self.title    forKey:@"feedTitle"];
+    [aCoder encodeObject:self.URL      forKey:@"URL"];
     [aCoder encodeObject:self.articles forKey:@"articles"];
+}
+
+- (void) feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
+    int newArticles = 0;
+    if (![self articleAlreadyContained:item]) {
+        newArticles++;
+        [self.articles addObject:item];
+    }
+    NSLog(@"%@", item.link);
+    NSLog(@"%@ updated with %d new articles", self.title, newArticles);
 }
 
 @end
