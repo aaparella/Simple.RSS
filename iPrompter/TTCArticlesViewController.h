@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TTCFeed.h"
 
-@class TTCFeed;
-
-@interface TTCArticlesViewController : UITableViewController
+@interface TTCArticlesViewController : UITableViewController <TTCFeedDelegate>
 
 @property (nonatomic, strong) TTCFeed* feed;
 

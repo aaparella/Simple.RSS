@@ -10,6 +10,9 @@
 #import "MWFeedParser.h"
 
 @interface TTCFeed() <MWFeedParserDelegate>
+{
+    int newArticles;
+}
 
 @end
 
@@ -81,12 +84,21 @@
 
 # pragma mark - MWFeedParserDelegate
 
+- (void) feedParser:(MWFeedParser *)parser didFailWithError:(NSError *)error {
+    // Tell our delegate that we failed to update
+    [self.delegate feed:self updateFailedWithError:error];
+}
+
 - (void) feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
-    int newArticles = 0;
     if (![self articleAlreadyContained:item]) {
         newArticles++;
         [self.articles addObject:item];
     }
+}
+
+- (void) feedParserDidFinish:(MWFeedParser *)parser {
+    [self.delegate feed:self updatedWithNewArticles:newArticles];
+    newArticles = 0;
 }
 
 @end

@@ -8,11 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+@class TTCFeed;
+
+@protocol TTCFeedDelegate
+
+- (void) feed:(TTCFeed *)feed updateFailedWithError:(NSError *) error;
+- (void) feed:(TTCFeed *)feed updatedWithNewArticles:(NSInteger) newArticles;
+
+@end
+
 @interface TTCFeed : NSObject <NSCoding>
 {
     NSUInteger unreadArticles;
 }
 
+@property (nonatomic, weak) id<TTCFeedDelegate> delegate;
 @property (nonatomic, strong) NSURL    *URL;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSDate   *lastFetched;

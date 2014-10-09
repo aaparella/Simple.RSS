@@ -10,6 +10,7 @@
 #import "TTCFeed.h"
 #import "TTCArticleCell.h"
 #import "MWFeedItem.h"
+#import "TTCEditFeedViewController.h"
 
 @interface TTCArticlesViewController () <UITableViewDataSource>
 
@@ -22,6 +23,7 @@
     if (self) {
         self.feed = feed;
         [self.feed updateArticles];
+        self.feed.delegate = self;
         
         self.refreshControl = [[UIRefreshControl alloc] init];
         [self.refreshControl addTarget:self action:@selector(updateFeed:) forControlEvents:UIControlEventValueChanged];
@@ -29,6 +31,9 @@
         [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"];
         
         self.navigationItem.title = self.feed.title;
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                                                                               target:self action:@selector(editFeed:)];
+        
         self.tableView.delegate = self;
     }
     
@@ -44,13 +49,26 @@
     [super didReceiveMemoryWarning];
 }
 
-# pragma mark - UIRefreshControl target
+- (void) editFeed:(id) sender {
+    TTCEditFeedViewController *editVC = [[TTCEditFeedViewController alloc] initWithFeed:self.feed];
+    [self.navigationController pushViewController:editVC animated:YES];
+}
 
 - (void) updateFeed:(id) sender {
     [self.feed updateArticles];
-    [self.tableView reloadData];
     
     [(UIRefreshControl *)sender endRefreshing];
+}
+
+# pragma mark - TTCFeedDelegate
+
+- (void) feed:(TTCFeed *)feed updatedWithNewArticles:(NSInteger)newArticles {
+    [self.tableView reloadData];
+}
+
+- (void) feed:(TTCFeed *)feed updateFailedWithError:(NSError *)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 #pragma mark - Table view data source
