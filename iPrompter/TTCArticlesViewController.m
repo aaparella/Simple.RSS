@@ -44,6 +44,8 @@
     [super didReceiveMemoryWarning];
 }
 
+# pragma mark - UIRefreshControl target
+
 - (void) updateFeed:(id) sender {
     [self.feed updateArticles];
     [self.tableView reloadData];
@@ -74,6 +76,7 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
     NSURL *link = [NSURL URLWithString:((MWFeedItem *)self.feed.articles[indexPath.row]).link];
     
     if ([link isEqual:[NSURL URLWithString:@""]]) {

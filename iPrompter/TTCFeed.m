@@ -15,6 +15,8 @@
 
 @implementation TTCFeed
 
+# pragma mark - initializers
+
 // Designated initializer
 - (instancetype) initWithTitle:(NSString *) title withURL:(NSString *) URL {
     self = [super init];
@@ -69,11 +71,15 @@
     return [NSString stringWithFormat:@"%@ %@", self.title, self.URL];
 }
 
+# pragma mark - NSCoding
+
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.title    forKey:@"feedTitle"];
     [aCoder encodeObject:self.URL      forKey:@"URL"];
     [aCoder encodeObject:self.articles forKey:@"articles"];
 }
+
+# pragma mark - MWFeedParserDelegate
 
 - (void) feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
     int newArticles = 0;

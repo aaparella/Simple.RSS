@@ -27,7 +27,6 @@
     
     if (self) {
         self.sectionHeaders = @[@"Sources", @"Collections"];
-        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
         
         self.navigationItem.title = @"Simple.rss";
         self.navigationItem.leftBarButtonItem = self.editButtonItem;
@@ -41,6 +40,10 @@
     }
     
     return self;
+}
+
+- (void) viewDidLoad {
+    [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"];
 }
 
 - (void) refreshFeeds:(id) sender {
@@ -103,7 +106,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Each section stored as an array of items that compose that section
     if (section == 0)
         return [[TTCFeedDataStore sharedStore] numberOfSources];
     
@@ -134,7 +136,8 @@
         
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // If we're inserting
+        // If we're inserting...
+        // Don't really need to do anything
     }
 }
 
