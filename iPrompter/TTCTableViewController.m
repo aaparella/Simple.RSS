@@ -90,11 +90,13 @@
 
 // Push new view for a given feed source or collection of sources
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    TTCFeed *selectedFeed = [[TTCFeedDataStore sharedStore] feedForIndex:indexPath.row];
     if (indexPath.section == 0) {
-        TTCArticlesViewController *avc = [[TTCArticlesViewController alloc] initWithFeed:[[TTCFeedDataStore sharedStore] feedForIndex:indexPath.item]];
+        TTCArticlesViewController *avc = [[TTCArticlesViewController alloc] initWithFeed:selectedFeed];
         [self.navigationController pushViewController:avc animated:YES];
     } else {
-        TTCCollectionViewController *tvc = [[TTCCollectionViewController alloc] initWithCollection:[[TTCFeedDataStore sharedStore] collectionForIndex:indexPath.item]];
+        TTCFeedCollection *selectedCollection = [[TTCFeedDataStore sharedStore] collectionForIndex:indexPath.row];
+        TTCCollectionViewController *tvc = [[TTCCollectionViewController alloc] initWithCollection:selectedCollection];
         [self.navigationController pushViewController:tvc animated:YES];
     }
 }
