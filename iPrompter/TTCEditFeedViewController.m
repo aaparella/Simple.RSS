@@ -7,9 +7,16 @@
 //
 
 #import "TTCEditFeedViewController.h"
+#import "TTCFeedDataStore.h"
 #import "TTCFeed.h"
 
 @interface TTCEditFeedViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UITextField *URLField;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *URLLabel;
+@property (weak, nonatomic) TTCFeed *feed;
 
 @end
 
@@ -18,7 +25,8 @@
 -(instancetype) initWithFeed:(TTCFeed *)feed {
     self = [super init];
     if (self) {
-        self.navigationItem.title = feed.title;
+        _feed = feed;
+        self.navigationItem.title = @"Edit Feed";
     }
     
     return self;
@@ -26,12 +34,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.nameField.text = self.feed.title;
+    self.URLField.text = self.feed.URL.description;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    // Actually have to replace the old data, as we have a new source for it
+    if (self.URLField.text != self.feed.URL.description) {
+        // Update URL and name just to be safe
+        // DISCARD OLD FEED ITEMS
+    } else if (self.nameField.text != self.feed.title) {
+        // Just update title of the feed
+    }
 }
 
 /*
