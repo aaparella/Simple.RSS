@@ -62,6 +62,15 @@
 
 // Manipulating / adding sources and collections
 
+- (void) replaceFeed:(TTCFeed *)oldFeed withFeed:(TTCFeed *)newFeed {
+    [self.sources removeObject:oldFeed];
+    [self.sources addObject:newFeed];
+    
+    for (TTCFeedCollection *collection in self.collections)
+        if ([collection.feeds containsObject:oldFeed])
+            [collection replaceFeed:oldFeed withFeed:newFeed];
+}
+
 - (void) updateFeeds {
     for (TTCFeed *feed in self.sources)
         [feed updateArticles];

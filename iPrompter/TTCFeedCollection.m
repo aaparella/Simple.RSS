@@ -36,6 +36,11 @@
     return [self.feeds count];
 }
 
+- (void) replaceFeed:(TTCFeed *)oldFeed withFeed:(TTCFeed *)newFeed {
+    [self.feeds removeObject:oldFeed];
+    [self.feeds addObject:newFeed];
+}
+
 - (void) removeSource:(TTCFeed *) source {
     [self.feeds removeObject:source];
 }

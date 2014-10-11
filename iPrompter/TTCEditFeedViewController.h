@@ -11,6 +11,8 @@
 @class TTCFeed;
 @interface TTCEditFeedViewController : UIViewController
 
+@property (nonatomic, weak) id delegate;
+
 - (instancetype) initWithFeed:(TTCFeed *) feed;
 
 @end

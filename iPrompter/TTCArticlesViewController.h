@@ -14,5 +14,6 @@
 @property (nonatomic, strong) TTCFeed* feed;
 
 - (instancetype) initWithFeed:(TTCFeed *) feed;
+- (void) loadNewData:(TTCFeed *) newFeed withNewURL:(BOOL) newURL;
 
 @end

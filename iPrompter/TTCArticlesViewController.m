@@ -51,13 +51,26 @@
 
 - (void) editFeed:(id) sender {
     TTCEditFeedViewController *editVC = [[TTCEditFeedViewController alloc] initWithFeed:self.feed];
+    editVC.delegate = self;
+    
     [self.navigationController pushViewController:editVC animated:YES];
 }
 
 - (void) updateFeed:(id) sender {
     [self.feed updateArticles];
+    [self.tableView reloadData];
     
     [(UIRefreshControl *)sender endRefreshing];
+}
+
+- (void) loadNewData:(TTCFeed *) newFeed withNewURL:(BOOL) newURL{
+    self.feed = newFeed;
+    self.navigationItem.title = newFeed.title;
+    
+    if (newURL)
+        [self.feed updateArticles];
+
+    [self.tableView reloadData];
 }
 
 # pragma mark - TTCFeedDelegate

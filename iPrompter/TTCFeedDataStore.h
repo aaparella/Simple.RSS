@@ -20,6 +20,8 @@
 
 + (instancetype) sharedStore;
 
+- (void) replaceFeed:(TTCFeed *)oldFeed withFeed:(TTCFeed *)newFeed;
+
 - (BOOL) storeData;
 - (void) updateFeeds;
 

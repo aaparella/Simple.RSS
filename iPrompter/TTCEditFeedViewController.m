@@ -7,6 +7,7 @@
 //
 
 #import "TTCEditFeedViewController.h"
+#import "TTCArticlesViewController.h"
 #import "TTCFeedDataStore.h"
 #import "TTCFeed.h"
 
@@ -45,13 +46,12 @@
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    // Actually have to replace the old data, as we have a new source for it
-    if (self.URLField.text != self.feed.URL.description) {
-        // Update URL and name just to be safe
-        // DISCARD OLD FEED ITEMS
-    } else if (self.nameField.text != self.feed.title) {
-        // Just update title of the feed
-    }
+
+    TTCFeed *newFeed = [[TTCFeed alloc] initWithTitle:self.nameField.text withURL:self.URLField.text];
+    [[TTCFeedDataStore sharedStore] replaceFeed:self.feed withFeed:newFeed];
+    
+    [(TTCArticlesViewController *)self.delegate loadNewData:newFeed
+                                                 withNewURL:![[NSURL URLWithString:self.URLField.text] isEqual:self.feed.URL]];
 }
 
 /*
