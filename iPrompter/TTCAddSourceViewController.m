@@ -52,7 +52,7 @@
 }
 
 - (void) confirm {
-    [[TTCFeedDataStore sharedStore] addSource:self.sourceNameField.text withURL:self.sourceNameField.text];
+    [[TTCFeedDataStore sharedStore] addSource:self.sourceNameField.text withURL:self.sourceURLField.text];
     [(TTCAddItemViewController *)self.delegate dismissViewControllerAnimated:YES completion:nil];
 }
 

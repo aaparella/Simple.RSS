@@ -47,19 +47,19 @@
     return self;
 }
 
-- (BOOL) articleAlreadyContained:(MWFeedItem *) feedItem {
+- (BOOL) articleIsNew:(MWFeedItem *) feedItem {
     for (MWFeedItem *item in self.articles)
-        if (item.link == feedItem.link)
-            return YES;
+        if ([item.identifier isEqualToString:feedItem.identifier])
+            return NO;
     
-    return NO;
+    return YES;
 }
 
 - (void) updateArticles {
     MWFeedParser *parser = [[MWFeedParser alloc] initWithFeedURL:self.URL];
     parser.delegate = self;
     parser.feedParseType = ParseTypeFull;
-    parser.connectionType = ConnectionTypeSynchronously;
+    parser.connectionType = ConnectionTypeAsynchronously;
     [parser parse];
 }
 
@@ -91,7 +91,8 @@
 }
 
 - (void) feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
-    if (![self articleAlreadyContained:item]) {
+    if ([self articleIsNew:item]) {
+        NSLog(@"New Article!");
         newArticles++;
         [self.articles addObject:item];
     }

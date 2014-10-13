@@ -23,6 +23,7 @@
     if (self) {
         self.feed = feed;
         [self.feed updateArticles];
+        
         self.feed.delegate = self;
         
         self.refreshControl = [[UIRefreshControl alloc] init];
@@ -99,9 +100,11 @@
     TTCArticleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TTCArticleCell" forIndexPath:indexPath];
     
     MWFeedItem *feedItem = self.feed.articles[indexPath.row];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm"];
     
     cell.articleTitleLabel.text = feedItem.title;
-    cell.datePublishedLabel.text = feedItem.date.description;
+    cell.datePublishedLabel.text = [dateFormatter stringFromDate:feedItem.date];
     
     return cell;
 }

@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwj-Lo-kMZ">
-                        <rect key="frame" x="8" y="2" width="254" height="21"/>
+                        <rect key="frame" x="8" y="2" width="304" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="isM-kX-Ate"/>
                         </constraints>
@@ -23,7 +23,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWY-NO-jCe">
-                        <rect key="frame" x="8" y="22" width="254" height="21"/>
+                        <rect key="frame" x="8" y="22" width="304" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="xDg-6h-H5f"/>
                         </constraints>
@@ -31,30 +31,21 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVp-ln-OMO">
-                        <rect key="frame" x="276" y="13" width="36" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="zVp-ln-OMO" firstAttribute="trailing" secondItem="NSo-aD-zSy" secondAttribute="trailingMargin" id="CBm-qg-dy1"/>
                     <constraint firstItem="xwj-Lo-kMZ" firstAttribute="top" secondItem="NSo-aD-zSy" secondAttribute="topMargin" constant="-6" id="IAW-09-hnP"/>
-                    <constraint firstItem="zVp-ln-OMO" firstAttribute="leading" secondItem="xwj-Lo-kMZ" secondAttribute="trailing" constant="14" id="J3F-T1-nWI"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="xwj-Lo-kMZ" secondAttribute="bottom" constant="12" id="Jxv-Xm-Sn7"/>
-                    <constraint firstAttribute="centerY" secondItem="zVp-ln-OMO" secondAttribute="centerY" id="Pib-mA-WJB"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="xwj-Lo-kMZ" secondAttribute="trailing" id="O1C-rK-eoo"/>
                     <constraint firstAttribute="bottomMargin" secondItem="LWY-NO-jCe" secondAttribute="bottom" constant="-7.5" id="T5e-6D-0O4"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="LWY-NO-jCe" secondAttribute="trailing" id="aGa-Oi-Diz"/>
                     <constraint firstItem="LWY-NO-jCe" firstAttribute="leading" secondItem="NSo-aD-zSy" secondAttribute="leadingMargin" id="dzU-mV-tvs"/>
                     <constraint firstItem="LWY-NO-jCe" firstAttribute="top" secondItem="NSo-aD-zSy" secondAttribute="topMargin" constant="14" id="hqc-UM-sTD"/>
-                    <constraint firstItem="zVp-ln-OMO" firstAttribute="leading" secondItem="LWY-NO-jCe" secondAttribute="trailing" constant="14" id="lV5-ir-NyP"/>
                     <constraint firstItem="xwj-Lo-kMZ" firstAttribute="leading" secondItem="NSo-aD-zSy" secondAttribute="leadingMargin" id="yJW-gP-48L"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="articleTitleLabel" destination="xwj-Lo-kMZ" id="4Gg-Rc-t1k"/>
                 <outlet property="datePublishedLabel" destination="LWY-NO-jCe" id="gu1-Mu-Ohq"/>
-                <outlet property="sourceLabel" destination="zVp-ln-OMO" id="bdc-ga-tIS"/>
             </connections>
             <point key="canvasLocation" x="646" y="542"/>
         </tableViewCell>
