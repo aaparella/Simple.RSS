@@ -41,6 +41,10 @@
     [self.feeds addObject:newFeed];
 }
 
+- (void) insertSource:(TTCFeed *) source {
+    [self.feeds addObject:source];
+}
+
 - (void) removeSource:(TTCFeed *) source {
     [self.feeds removeObject:source];
 }

@@ -19,6 +19,8 @@
 - (instancetype) initWithTitle:(NSString *) title;
 
 - (void) replaceFeed:(TTCFeed *) oldFeed withFeed:(TTCFeed *)newFeed;
+
+- (void) insertSource:(TTCFeed *) source;
 - (void) removeSource:(TTCFeed *) source;
 
 @end

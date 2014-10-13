@@ -63,6 +63,24 @@
     return cell;
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1) {
+        UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
+        if (selectedCell.accessoryType != UITableViewCellAccessoryCheckmark) {
+            selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [self.collection insertSource:[[TTCFeedDataStore sharedStore] feedForIndex:indexPath.row]];
+        }
+        else {
+            selectedCell.accessoryType = UITableViewCellAccessoryNone;
+            [self.collection removeSource:[[TTCFeedDataStore sharedStore] feedForIndex:indexPath.row]];
+        }
+        
+        selectedCell.selected = NO;
+    }
+    
+    NSLog(@"%@", self.collection.feeds);
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
