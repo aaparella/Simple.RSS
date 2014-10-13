@@ -26,7 +26,7 @@
     if (self) {
         // Ugliest hack in all of ugly hacks
         UITableViewCell *dummyCell = [UITableViewCell new];
-        self.collectionNameField = [[UITextField alloc] initWithFrame:CGRectMake(dummyCell.frame.origin.x + 10,
+        self.collectionNameField = [[UITextField alloc] initWithFrame:CGRectMake(dummyCell.frame.origin.x + 15,
                                                                                  dummyCell.frame.origin.y,
                                                                                  dummyCell.frame.size.width,
                                                                                  dummyCell.frame.size.height)];
@@ -100,8 +100,6 @@
         
         selectedCell.selected = NO;
     }
-    
-    NSLog(@"%@", self.collection.feeds);
 }
 
 @end
