@@ -15,6 +15,7 @@
 @interface TTCAddCollectionTableViewController ()
 
 @property (nonatomic, strong) TTCFeedCollection* collection;
+@property (nonatomic, strong) UITextField *collectionNameField;
 
 @end
 
@@ -23,6 +24,14 @@
 - (instancetype) init {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
+        // Ugliest hack in all of ugly hacks
+        UITableViewCell *dummyCell = [UITableViewCell new];
+        self.collectionNameField = [[UITextField alloc] initWithFrame:CGRectMake(dummyCell.frame.origin.x + 10,
+                                                                                 dummyCell.frame.origin.y,
+                                                                                 dummyCell.frame.size.width,
+                                                                                 dummyCell.frame.size.height)];
+        self.collectionNameField.placeholder = @"New Collection";
+        
         self.navigationItem.title = @"Add Collection";
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(confirm)];
@@ -46,7 +55,11 @@
 }
 
 - (void) confirm {
-    [[TTCFeedDataStore sharedStore] addCollection:self.collection.title withFeeds:self.collection.feeds];
+    [[TTCFeedDataStore sharedStore] addCollection:self.collectionNameField.text withFeeds:self.collection.feeds];
+    [self.delegate dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) cancel {
     [self.delegate dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -65,9 +78,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     
-    if (indexPath.section == 0)
-        cell.textLabel.text = @"PlaceHolder";
-    else
+    if (indexPath.section == 0) {
+        [cell.contentView addSubview:self.collectionNameField];
+    } else
         cell.textLabel.text = [[[TTCFeedDataStore sharedStore] feedForIndex:indexPath.row] title];
     
     return cell;
