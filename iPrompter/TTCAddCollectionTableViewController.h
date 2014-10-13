@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class TTCAddItemViewController;
+
 @interface TTCAddCollectionTableViewController : UITableViewController
+
+@property (nonatomic, weak) TTCAddItemViewController *delegate;
 
 @end

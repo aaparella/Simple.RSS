@@ -21,10 +21,14 @@
 - (instancetype) init {
     self = [super init];
     if (self) {
-        [self addChildViewController:[[TTCAddSourceViewController alloc] init]];
-        [self addChildViewController:[[TTCAddCollectionTableViewController alloc] init]];
+        TTCAddSourceViewController *addSource = [TTCAddSourceViewController new];
+        TTCAddCollectionTableViewController *addColl = [TTCAddCollectionTableViewController new];
         
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(confirmAddition:)];
+        addSource.delegate = self;
+        addColl.delegate = self;
+        
+        [self addChildViewController:[[UINavigationController alloc] initWithRootViewController:addSource]];
+        [self addChildViewController:[[UINavigationController alloc] initWithRootViewController:addColl]];
     }
     
     return self;
@@ -38,15 +42,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void) confirmAddition:(id) sender {
-    if ([self.selectedViewController isKindOfClass:TTCAddSourceViewController.class])
-        [(TTCAddSourceViewController *)self.selectedViewController addSource:self];
-    else
-        [(TTCAddCollectionViewController *)self.selectedViewController addCollection:self];
-    
-    [self.dismissDelegate dismissViewController];
 }
 
 /*

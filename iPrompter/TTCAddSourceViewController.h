@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "TTCTableViewController.h"
 
+@class TTCAddItemViewController;
+
 @interface TTCAddSourceViewController : UIViewController
 
-- (void) addSource:(id)sender;
+@property (nonatomic, weak) TTCAddItemViewController *delegate;
 
 @end

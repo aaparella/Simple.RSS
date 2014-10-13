@@ -9,6 +9,7 @@
 #import "TTCAddSourceViewController.h"
 #import "TTCTableViewController.h"
 #import "TTCFeedDataStore.h"
+#import "TTCAddItemViewController.h"
 
 @interface TTCAddSourceViewController () <UITextFieldDelegate>
 
@@ -22,6 +23,14 @@
 - (instancetype) init {
     self = [super init];
     if (self) {
+        self.navigationItem.title = @"Add Source";
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                              target:self
+                                                                                              action:@selector(cancel)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                               target:self
+                                                                                               action:@selector(confirm)];
+        
         self.tabBarItem.title = @"Add Source";
         self.tabBarItem.image = [UIImage imageNamed:@"addSourceIcon"];
     }
@@ -42,8 +51,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) addSource:(id)sender {
-    [[TTCFeedDataStore sharedStore] addSource:self.sourceNameField.text withURL:self.sourceURLField.text];
+- (void) confirm {
+    [[TTCFeedDataStore sharedStore] addSource:self.sourceNameField.text withURL:self.sourceNameField.text];
+    [(TTCAddItemViewController *)self.delegate dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) cancel {
+    [self.delegate dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

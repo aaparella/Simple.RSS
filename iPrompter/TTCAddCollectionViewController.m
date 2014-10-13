@@ -31,10 +31,6 @@
     return self;
 }
 
-- (void)addCollection:(id)sender {
-    [[TTCFeedDataStore sharedStore] addCollection:self.collectionNameField.text withFeeds:@[]];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.

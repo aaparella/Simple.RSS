@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 // Because we don't need to actually send any messages
-@class TTCTableViewController;
+@class TTCAddItemViewController;
 
 @interface TTCAddCollectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-- (void)addCollection:(id)sender;
+@property (nonatomic, weak) TTCAddItemViewController *delegate;
 
 @end

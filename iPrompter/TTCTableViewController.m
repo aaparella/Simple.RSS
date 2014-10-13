@@ -59,9 +59,7 @@
                                                                                             target:self
                                                                                             action:@selector(dismissViewController)];
     
-    UINavigationController* nvc = [[UINavigationController alloc] initWithRootViewController:addVC];
-    
-    [self presentViewController:nvc animated:YES completion:nil];
+    [self presentViewController:addVC animated:YES completion:nil];
 }
 
 - (void) addSource:(NSString *) sourceName withURL:(NSString *) URL {    
