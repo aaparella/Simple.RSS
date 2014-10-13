@@ -25,6 +25,7 @@
     self = [super init];
     if (self) {
         self.title = title;
+        self.unreadArticles = 0;
         self.URL = [NSURL URLWithString:URL];
         
         self.articles = [[NSMutableArray alloc] init];

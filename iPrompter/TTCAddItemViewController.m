@@ -10,6 +10,7 @@
 #import "TTCTableViewController.h"
 #import "TTCAddCollectionViewController.h"
 #import "TTCAddSourceViewController.h"
+#import "TTCAddCollectionTableViewController.h"
 
 @interface TTCAddItemViewController ()
 
@@ -21,7 +22,7 @@
     self = [super init];
     if (self) {
         [self addChildViewController:[[TTCAddSourceViewController alloc] init]];
-        [self addChildViewController:[[TTCAddCollectionViewController alloc] init]];
+        [self addChildViewController:[[TTCAddCollectionTableViewController alloc] init]];
         
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(confirmAddition:)];
     }

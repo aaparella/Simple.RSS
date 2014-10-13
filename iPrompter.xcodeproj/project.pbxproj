@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		68E5031F585F449DB1900B04 /* libPods-iPrompter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1B87C122E244258E16EF51 /* libPods-iPrompter.a */; };
 		FA103D1719E26CE70014677F /* TTCAddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA103D1619E26CE70014677F /* TTCAddItemViewController.m */; };
+		FA1624E719EBA97E00077A41 /* TTCAddCollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1624E619EBA97E00077A41 /* TTCAddCollectionTableViewController.m */; };
 		FA1C145019DCAE4C0049E888 /* TTCCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1C144F19DCAE4C0049E888 /* TTCCollectionViewController.m */; };
 		FA28282819D37AD500640A2A /* TTCAddSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */; };
 		FA28282919D37AD500640A2A /* TTCAddSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */; };
@@ -47,6 +48,8 @@
 		4A1B87C122E244258E16EF51 /* libPods-iPrompter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPrompter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA103D1519E26CE70014677F /* TTCAddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCAddItemViewController.h; sourceTree = "<group>"; };
 		FA103D1619E26CE70014677F /* TTCAddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCAddItemViewController.m; sourceTree = "<group>"; };
+		FA1624E519EBA97E00077A41 /* TTCAddCollectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCAddCollectionTableViewController.h; sourceTree = "<group>"; };
+		FA1624E619EBA97E00077A41 /* TTCAddCollectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCAddCollectionTableViewController.m; sourceTree = "<group>"; };
 		FA1C144E19DCAE4C0049E888 /* TTCCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCCollectionViewController.h; sourceTree = "<group>"; };
 		FA1C144F19DCAE4C0049E888 /* TTCCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCCollectionViewController.m; sourceTree = "<group>"; };
 		FA28282519D37AD500640A2A /* TTCAddSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCAddSourceViewController.h; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 				FAA89F6119D4ECFF00C47330 /* TTCAddCollectionViewController.h */,
 				FAA89F6219D4ECFF00C47330 /* TTCAddCollectionViewController.m */,
 				FAA89F6319D4ECFF00C47330 /* TTCAddCollectionViewController.xib */,
+				FA1624E519EBA97E00077A41 /* TTCAddCollectionTableViewController.h */,
+				FA1624E619EBA97E00077A41 /* TTCAddCollectionTableViewController.m */,
 				FA103D1519E26CE70014677F /* TTCAddItemViewController.h */,
 				FA103D1619E26CE70014677F /* TTCAddItemViewController.m */,
 			);
@@ -371,6 +376,7 @@
 				FA1C145019DCAE4C0049E888 /* TTCCollectionViewController.m in Sources */,
 				FA28857319E72DC50073F91E /* TTCEditFeedViewController.m in Sources */,
 				FA55F22519CFF22E006CC119 /* main.m in Sources */,
+				FA1624E719EBA97E00077A41 /* TTCAddCollectionTableViewController.m in Sources */,
 				FAC790E319DA14EE005083F9 /* TTCArticlesViewController.m in Sources */,
 				FA28282819D37AD500640A2A /* TTCAddSourceViewController.m in Sources */,
 			);
