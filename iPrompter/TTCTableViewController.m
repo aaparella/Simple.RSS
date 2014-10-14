@@ -8,9 +8,9 @@
 
 #import "TTCTableViewController.h"
 #import "TTCFeedDataStore.h"
-#import "TTCArticlesViewController.h"
 #import "TTCFeed.h"
 #import "TTCFeedCollection.h"
+#import "TTCArticlesViewController.h"
 #import "TTCCollectionViewController.h"
 #import "TTCAddItemViewController.h"
 

@@ -11,8 +11,6 @@
 		FA103D1719E26CE70014677F /* TTCAddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA103D1619E26CE70014677F /* TTCAddItemViewController.m */; };
 		FA1624E719EBA97E00077A41 /* TTCAddCollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1624E619EBA97E00077A41 /* TTCAddCollectionTableViewController.m */; };
 		FA1C145019DCAE4C0049E888 /* TTCCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1C144F19DCAE4C0049E888 /* TTCCollectionViewController.m */; };
-		FA28282819D37AD500640A2A /* TTCAddSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */; };
-		FA28282919D37AD500640A2A /* TTCAddSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */; };
 		FA28857319E72DC50073F91E /* TTCEditFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28857119E72DC50073F91E /* TTCEditFeedViewController.m */; };
 		FA28857419E72DC50073F91E /* TTCEditFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA28857219E72DC50073F91E /* TTCEditFeedViewController.xib */; };
 		FA304CB119D887C40086569E /* TTCFeedCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA304CB019D887C40086569E /* TTCFeedCollection.m */; };
@@ -51,9 +49,6 @@
 		FA1624E619EBA97E00077A41 /* TTCAddCollectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCAddCollectionTableViewController.m; sourceTree = "<group>"; };
 		FA1C144E19DCAE4C0049E888 /* TTCCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCCollectionViewController.h; sourceTree = "<group>"; };
 		FA1C144F19DCAE4C0049E888 /* TTCCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCCollectionViewController.m; sourceTree = "<group>"; };
-		FA28282519D37AD500640A2A /* TTCAddSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCAddSourceViewController.h; sourceTree = "<group>"; };
-		FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCAddSourceViewController.m; sourceTree = "<group>"; };
-		FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTCAddSourceViewController.xib; sourceTree = "<group>"; };
 		FA28857019E72DC50073F91E /* TTCEditFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCEditFeedViewController.h; sourceTree = "<group>"; };
 		FA28857119E72DC50073F91E /* TTCEditFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCEditFeedViewController.m; sourceTree = "<group>"; };
 		FA28857219E72DC50073F91E /* TTCEditFeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTCEditFeedViewController.xib; sourceTree = "<group>"; };
@@ -124,11 +119,8 @@
 		FA103D1319E267520014677F /* Add Sources */ = {
 			isa = PBXGroup;
 			children = (
-				FA28282519D37AD500640A2A /* TTCAddSourceViewController.h */,
-				FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */,
 				FAC3D9F719ECAE6C00CFEAA3 /* TTCAddSourceTableViewController.h */,
 				FAC3D9F819ECAE6C00CFEAA3 /* TTCAddSourceTableViewController.m */,
-				FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */,
 				FA1624E519EBA97E00077A41 /* TTCAddCollectionTableViewController.h */,
 				FA1624E619EBA97E00077A41 /* TTCAddCollectionTableViewController.m */,
 				FA103D1519E26CE70014677F /* TTCAddItemViewController.h */,
@@ -310,7 +302,6 @@
 				FA304CB519D8A9FE0086569E /* addCollectionIcon@2x.png in Resources */,
 				FA7B366C19E3ADD500CE3F30 /* TTCArticleCell.xib in Resources */,
 				FA55F23019CFF22E006CC119 /* Images.xcassets in Resources */,
-				FA28282919D37AD500640A2A /* TTCAddSourceViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +365,6 @@
 				FA1624E719EBA97E00077A41 /* TTCAddCollectionTableViewController.m in Sources */,
 				FAC790E319DA14EE005083F9 /* TTCArticlesViewController.m in Sources */,
 				FAC3D9F919ECAE6C00CFEAA3 /* TTCAddSourceTableViewController.m in Sources */,
-				FA28282819D37AD500640A2A /* TTCAddSourceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,8 +9,8 @@
 #import "TTCArticlesViewController.h"
 #import "TTCFeed.h"
 #import "TTCArticleCell.h"
-#import "MWFeedItem.h"
 #import "TTCEditFeedViewController.h"
+#import "MWFeedItem.h"
 
 @interface TTCArticlesViewController () <UITableViewDataSource>
 

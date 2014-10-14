@@ -17,6 +17,8 @@
 
 @end
 
+#pragma mark - Table View Controller
+
 @implementation TTCAddSourceTableViewController
 
 - (instancetype) init {
@@ -26,6 +28,7 @@
 - (instancetype) initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
+        // Set navigation item properties
         self.navigationItem.title = @"Add Source";
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                               target:self
@@ -33,6 +36,7 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                                target:self
                                                                                                action:@selector(confirm)];
+        // Set tab bar properties
         self.tabBarItem.title = @"Add Source";
         self.tabBarItem.image = [UIImage imageNamed:@"addSourceIcon"];
         
@@ -61,6 +65,8 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+# pragma mark - Navigation Item methods
 
 - (void)cancel {
     [self.delegate dismissViewControllerAnimated:YES completion:nil];

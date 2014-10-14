@@ -8,8 +8,6 @@
 
 #import "TTCAddItemViewController.h"
 #import "TTCTableViewController.h"
-#import "TTCAddCollectionViewController.h"
-#import "TTCAddSourceViewController.h"
 #import "TTCAddCollectionTableViewController.h"
 #import "TTCAddSourceTableViewController.h"
 

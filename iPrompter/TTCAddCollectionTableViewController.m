@@ -19,6 +19,8 @@
 
 @end
 
+#pragma mark - Table View Controller
+
 @implementation TTCAddCollectionTableViewController
 
 - (instancetype) init {
@@ -53,6 +55,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Navigation Item methods
 
 - (void) confirm {
     [[TTCFeedDataStore sharedStore] addCollection:self.collectionNameField.text withFeeds:self.collection.feeds];
