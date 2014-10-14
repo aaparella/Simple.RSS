@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class TTCFeed;
+@class MWFeedItem;
 
 @interface TTCFeedCollection : NSObject <NSCoding>
 
@@ -19,6 +20,10 @@
 - (instancetype) initWithTitle:(NSString *) title;
 
 - (void) replaceFeed:(TTCFeed *) oldFeed withFeed:(TTCFeed *)newFeed;
+- (MWFeedItem *) articleForindex:(NSUInteger) index;
+
+- (NSUInteger) numberOfArticles;
+- (NSUInteger) numberOfFeeds;
 
 - (void) insertSource:(TTCFeed *) source;
 - (void) removeSource:(TTCFeed *) source;

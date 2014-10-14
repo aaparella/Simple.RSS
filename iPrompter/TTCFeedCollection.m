@@ -9,6 +9,12 @@
 #import "TTCFeedCollection.h"
 #import "TTCFeed.h"
 
+@interface TTCFeedCollection()
+
+@property (nonatomic, strong) NSMutableArray *articles;
+
+@end
+
 @implementation TTCFeedCollection
 
 - (instancetype) initWithTitle:(NSString *)title withFeeds:(NSArray *)feeds {
@@ -16,6 +22,9 @@
     if (self) {
         self.title = title;
         self.feeds = [feeds mutableCopy];
+        self.articles = [NSMutableArray new];
+        
+        [self collateArticles];
     }
     return self;
 }
@@ -26,14 +35,29 @@
 
 - (instancetype) initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
-    if (self)
+    if (self) {
         self.title = [aDecoder decodeObjectForKey:@"collectionTitle"];
+        self.feeds = [aDecoder decodeObjectForKey:@"feeds"];
+    }
     
     return self;
 }
 
+- (void) collateArticles {
+    for (TTCFeed *feed in self.feeds)
+        self.articles = [[self.articles arrayByAddingObjectsFromArray:feed.articles] mutableCopy];
+}
+
 - (NSUInteger) numberOfFeeds {
     return [self.feeds count];
+}
+
+- (NSUInteger) numberOfArticles {
+    return [self.articles count];
+}
+
+- (MWFeedItem *) articleForindex:(NSUInteger)index {
+    return self.articles[index];
 }
 
 - (void) replaceFeed:(TTCFeed *)oldFeed withFeed:(TTCFeed *)newFeed {
@@ -51,6 +75,7 @@
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.title forKey:@"collectionTitle"];
+    [aCoder encodeObject:self.feeds forKey:@"feeds"];
 }
 
 - (NSString *) description {
