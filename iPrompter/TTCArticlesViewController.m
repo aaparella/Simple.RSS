@@ -87,12 +87,11 @@
 }
 
 - (void) feed:(TTCFeed *)feed updateFailedWithError:(NSError *)error {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:error.localizedDescription
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil, nil];
-    [alert show];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Connection!"
+                                                                             message:[NSString stringWithFormat:@"We couldn't reach the source %@", self.feed.title]
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -124,11 +123,12 @@
     NSURL *link = [NSURL URLWithString:((MWFeedItem *)self.feed.articles[indexPath.row]).link];
     
     if ([link isEqual:[NSURL URLWithString:@""]]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Link"
-                                                        message:@"We couldn't find a link for that article :("
-                                                       delegate:nil cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil, nil];
-        [alert show];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No URL"
+                                                                                 message:@"We couldn't find a URL for that article"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+        
     } else {
         NSURLRequest* req = [[NSURLRequest alloc] initWithURL:link];
         
