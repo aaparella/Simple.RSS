@@ -31,8 +31,10 @@
         [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"];
         
         self.navigationItem.title = self.feed.title;
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
-                                                                                               target:self action:@selector(editFeed:)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"\u2699"
+                                                                                  style:UIBarButtonItemStylePlain
+                                                                                 target:self
+                                                                                 action:@selector(editFeed:)];
         
         self.tableView.delegate = self;
     }
