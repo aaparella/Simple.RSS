@@ -25,6 +25,7 @@
 		FA55F23F19CFF22E006CC119 /* iPrompterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55F23E19CFF22E006CC119 /* iPrompterTests.m */; };
 		FA7B366A19E3AD9700CE3F30 /* TTCArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7B366919E3AD9700CE3F30 /* TTCArticleCell.m */; };
 		FA7B366C19E3ADD500CE3F30 /* TTCArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7B366B19E3ADD500CE3F30 /* TTCArticleCell.xib */; };
+		FAC3D9F919ECAE6C00CFEAA3 /* TTCAddSourceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC3D9F819ECAE6C00CFEAA3 /* TTCAddSourceTableViewController.m */; };
 		FAC790E319DA14EE005083F9 /* TTCArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC790E219DA14EE005083F9 /* TTCArticlesViewController.m */; };
 		FACD0A0319D3C17A00FA8C53 /* TTCFeedDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FACD0A0219D3C17A00FA8C53 /* TTCFeedDataStore.m */; };
 		FAE38E8119D7D8E10075952C /* TTCFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE38E8019D7D8E10075952C /* TTCFeed.m */; };
@@ -74,6 +75,8 @@
 		FA7B366819E3AD9700CE3F30 /* TTCArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCArticleCell.h; sourceTree = "<group>"; };
 		FA7B366919E3AD9700CE3F30 /* TTCArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCArticleCell.m; sourceTree = "<group>"; };
 		FA7B366B19E3ADD500CE3F30 /* TTCArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTCArticleCell.xib; sourceTree = "<group>"; };
+		FAC3D9F719ECAE6C00CFEAA3 /* TTCAddSourceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCAddSourceTableViewController.h; sourceTree = "<group>"; };
+		FAC3D9F819ECAE6C00CFEAA3 /* TTCAddSourceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCAddSourceTableViewController.m; sourceTree = "<group>"; };
 		FAC790E119DA14EE005083F9 /* TTCArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCArticlesViewController.h; sourceTree = "<group>"; };
 		FAC790E219DA14EE005083F9 /* TTCArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCArticlesViewController.m; sourceTree = "<group>"; };
 		FACD0A0119D3C17A00FA8C53 /* TTCFeedDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCFeedDataStore.h; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 			children = (
 				FA28282519D37AD500640A2A /* TTCAddSourceViewController.h */,
 				FA28282619D37AD500640A2A /* TTCAddSourceViewController.m */,
+				FAC3D9F719ECAE6C00CFEAA3 /* TTCAddSourceTableViewController.h */,
+				FAC3D9F819ECAE6C00CFEAA3 /* TTCAddSourceTableViewController.m */,
 				FA28282719D37AD500640A2A /* TTCAddSourceViewController.xib */,
 				FA1624E519EBA97E00077A41 /* TTCAddCollectionTableViewController.h */,
 				FA1624E619EBA97E00077A41 /* TTCAddCollectionTableViewController.m */,
@@ -368,6 +373,7 @@
 				FA55F22519CFF22E006CC119 /* main.m in Sources */,
 				FA1624E719EBA97E00077A41 /* TTCAddCollectionTableViewController.m in Sources */,
 				FAC790E319DA14EE005083F9 /* TTCArticlesViewController.m in Sources */,
+				FAC3D9F919ECAE6C00CFEAA3 /* TTCAddSourceTableViewController.m in Sources */,
 				FA28282819D37AD500640A2A /* TTCAddSourceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,7 +23,6 @@
     if (self) {
         self.feed = feed;
         [self.feed updateArticles];
-        
         self.feed.delegate = self;
         
         self.refreshControl = [[UIRefreshControl alloc] init];
@@ -44,6 +43,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"TTCArticleCell" bundle:nil] forCellReuseIdentifier:@"TTCArticleCell"];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +85,11 @@
 }
 
 - (void) feed:(TTCFeed *)feed updateFailedWithError:(NSError *)error {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:error.localizedDescription
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil, nil];
     [alert show];
 }
 

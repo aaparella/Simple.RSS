@@ -11,6 +11,7 @@
 #import "TTCAddCollectionViewController.h"
 #import "TTCAddSourceViewController.h"
 #import "TTCAddCollectionTableViewController.h"
+#import "TTCAddSourceTableViewController.h"
 
 @interface TTCAddItemViewController ()
 
@@ -21,7 +22,8 @@
 - (instancetype) init {
     self = [super init];
     if (self) {
-        TTCAddSourceViewController *addSource = [TTCAddSourceViewController new];
+        TTCAddSourceTableViewController *addSource = [TTCAddSourceTableViewController new];
+//        TTCAddSourceViewController *addSource = [TTCAddSourceViewController new];
         TTCAddCollectionTableViewController *addColl = [TTCAddCollectionTableViewController new];
         
         addSource.delegate = self;
