@@ -60,6 +60,8 @@
 
 - (void) confirm {
     [[TTCFeedDataStore sharedStore] addCollection:self.collectionNameField.text withFeeds:self.collection.feeds];
+    [self.delegate resignFirstResponder];
+    
     [self.delegate dismissViewControllerAnimated:YES completion:nil];
 }
 

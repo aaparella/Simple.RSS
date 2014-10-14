@@ -52,6 +52,8 @@
 
         self.URLField = [[UITextField alloc] initWithFrame:cellRect];
         self.URLField.placeholder = @"Source URL";
+        self.URLField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        self.URLField.autocorrectionType = UITextAutocorrectionTypeNo;
     }
     
     return self;
