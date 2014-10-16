@@ -12,7 +12,7 @@
 #import "TTCFeedCollection.h"
 #import "TTCFeed.h"
 
-@interface TTCAddCollectionTableViewController ()
+@interface TTCAddCollectionTableViewController () <UITextFieldDelegate>
 
 @property (nonatomic, strong) TTCFeedCollection* collection;
 @property (nonatomic, strong) UITextField *collectionNameField;
@@ -34,10 +34,12 @@
                                                                                  dummyCell.frame.size.height)];
         self.collectionNameField.placeholder = @"New Collection";
         
+        self.collectionNameField.delegate = self;
         self.navigationItem.title = @"Add Collection";
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(confirm)];
-        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                              target:self action:@selector(cancel)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                               target:self action:@selector(confirm)];
         self.collection = [[TTCFeedCollection alloc] initWithTitle:@""];
         self.tabBarItem.title = @"Add Collection";
         self.tabBarItem.image = [UIImage imageNamed:@"addCollectionIcon"];
@@ -108,6 +110,14 @@
         
         selectedCell.selected = NO;
     }
+}
+
+
+# pragma UITextFieldDelegate
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

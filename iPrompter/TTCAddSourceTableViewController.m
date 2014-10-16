@@ -10,7 +10,7 @@
 #import "TTCAddItemViewController.h"
 #import "TTCFeedDataStore.h"
 
-@interface TTCAddSourceTableViewController ()
+@interface TTCAddSourceTableViewController () <UITextFieldDelegate>
 
 @property (nonatomic, strong) UITextField *nameField;
 @property (nonatomic, strong) UITextField *URLField;
@@ -48,9 +48,11 @@
                                      dummyCell.frame.size.height);
         
         self.nameField = [[UITextField alloc] initWithFrame:cellRect];
+        self.nameField.delegate = self;
         self.nameField.placeholder = @"Source Name";
 
         self.URLField = [[UITextField alloc] initWithFrame:cellRect];
+        self.URLField.delegate = self;
         self.URLField.placeholder = @"Source URL";
         self.URLField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.URLField.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -102,6 +104,13 @@
         [cell.contentView addSubview:self.URLField];
     
     return cell;
+}
+
+# pragma UITextFieldDelegate
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end
