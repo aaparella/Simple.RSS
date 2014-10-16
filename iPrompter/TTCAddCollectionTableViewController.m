@@ -59,6 +59,7 @@
 #pragma mark - Navigation Item methods
 
 - (void) confirm {
+    [self.tableView endEditing:YES];
     [[TTCFeedDataStore sharedStore] addCollection:self.collectionNameField.text withFeeds:self.collection.feeds];
     [self.delegate resignFirstResponder];
     
@@ -66,6 +67,7 @@
 }
 
 - (void) cancel {
+    [self.tableView endEditing:YES];
     [self.delegate dismissViewControllerAnimated:YES completion:nil];
 }
 

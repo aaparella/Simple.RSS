@@ -71,10 +71,12 @@
 # pragma mark - Navigation Item methods
 
 - (void)cancel {
+    [self.tableView endEditing:YES];
     [self.delegate dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)confirm {
+    [self.tableView endEditing:YES];
     [[TTCFeedDataStore sharedStore] addSource:self.nameField.text withURL:self.URLField.text];
     [self.delegate dismissViewControllerAnimated:YES completion:nil];
 }
