@@ -7,6 +7,7 @@
 //
 
 #import "TTCFeed.h"
+#import "TTCFeedCollection.h"
 #import "MWFeedParser.h"
 
 @interface TTCFeed() <MWFeedParserDelegate>
@@ -27,7 +28,8 @@
         self.title = title;
         self.unreadArticles = 0;
         self.URL = [NSURL URLWithString:URL];
-        
+        // Hold the collections that i
+        self.containingCollections = [NSPointerArray weakObjectsPointerArray];
         self.articles = [[NSMutableArray alloc] init];
         [self updateArticles];
     }
@@ -53,6 +55,11 @@
             return NO;
     
     return YES;
+}
+
+- (void) addContainingCollection:(TTCFeedCollection *)collection {
+    __weak TTCFeedCollection *coll = collection;
+    [self.containingCollections addPointer:(__bridge void *)(coll)];
 }
 
 - (void) updateArticles {

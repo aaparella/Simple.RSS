@@ -27,6 +27,7 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSDate   *lastFetched;
 @property (nonatomic, strong) NSMutableArray *articles;
+@property (nonatomic, strong) NSPointerArray *containingCollections;
 
 - (instancetype) initWithTitle:(NSString *)title withURL:(NSString *)URL;
 
