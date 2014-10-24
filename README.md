@@ -1,4 +1,4 @@
-iPrompter
+Simple.RSS
 =========
 
 ![](https://travis-ci.org/aaparella/Simple.RSS.svg?branch=master)
