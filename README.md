@@ -1,7 +1,7 @@
-iPrompter
+Simple.RSS
 =========
 
-![](https://travis-ci.org/aaparella/iPrompter.svg?branch=master)
+![](https://travis-ci.org/aaparella/Simple.RSS.svg?branch=master)
 
 iOS version of Prompter news aggregator
 
