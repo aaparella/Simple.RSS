@@ -8,6 +8,7 @@
 
 #import "TTCFeedCollection.h"
 #import "TTCFeed.h"
+#import "MWFeedItem.h"
 
 @interface TTCFeedCollection()
 
@@ -47,6 +48,16 @@
     for (TTCFeed *feed in self.feeds)
         self.articles = [[self.articles arrayByAddingObjectsFromArray:feed.articles] mutableCopy];
 }
+
+- (void) updateArticlesForFeed:(TTCFeed *)feed {
+    for (MWFeedItem *article in feed.articles)
+        if (![self.articles containsObject:article]) {
+            [self.articles addObject:article];
+            NSLog(@"Adding new article to collection %@", article);
+        }
+    
+}
+
 
 - (NSUInteger) numberOfFeeds {
     return [self.feeds count];

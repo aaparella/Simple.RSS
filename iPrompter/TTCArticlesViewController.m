@@ -26,7 +26,8 @@
         self.feed.delegate = self;
         
         self.refreshControl = [[UIRefreshControl alloc] init];
-        [self.refreshControl addTarget:self action:@selector(updateFeed:) forControlEvents:UIControlEventValueChanged];
+        [self.refreshControl addTarget:self action:@selector(updateFeed:)
+                      forControlEvents:UIControlEventValueChanged];
 
         [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"];
         

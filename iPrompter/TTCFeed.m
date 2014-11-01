@@ -108,6 +108,11 @@
 - (void) feedParserDidFinish:(MWFeedParser *)parser {
     [self.delegate feed:self updatedWithNewArticles:newArticles];
     newArticles = 0;
+    
+    for (TTCFeedCollection* coll in self.containingCollections) {
+        // Update the contents of each collection
+        [coll updateArticlesForFeed:self];
+    }
 }
 
 @end

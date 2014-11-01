@@ -28,4 +28,6 @@
 - (void) insertSource:(TTCFeed *) source;
 - (void) removeSource:(TTCFeed *) source;
 
+- (void) updateArticlesForFeed:(TTCFeed *) feed;
+
 @end
