@@ -66,7 +66,7 @@
     MWFeedParser *parser = [[MWFeedParser alloc] initWithFeedURL:self.URL];
     parser.delegate = self;
     parser.feedParseType = ParseTypeFull;
-    parser.connectionType = ConnectionTypeSynchronously;
+    parser.connectionType = ConnectionTypeAsynchronously;
     [parser parse];
 }
 
