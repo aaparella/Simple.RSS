@@ -15,9 +15,12 @@
 // Ensure that only ever one data store object exists
 + (instancetype) sharedStore {
     static TTCFeedDataStore* dataStore = nil;
+    static dispatch_once_t token;
     
-    if (!dataStore)
-        dataStore = [[TTCFeedDataStore alloc] initPrivate];
+    dispatch_once(&token, ^{
+        if (!dataStore)
+            dataStore = [[TTCFeedDataStore alloc] initPrivate];
+    });
     
     return dataStore;
 }
